@@ -12,6 +12,7 @@ muteSound.mobileAutoEnable = false;
 const music = new Audio("./music/christmas-song.ogg");
 music.loop = true;
 card.addEventListener('click', e => {
+  e.preventDefault();
   $('html, body').css({overflow: 'hidden'});
   card.classList.toggle('flipped');
   if(iosPlatforms.indexOf(platform) !== -1){muteSound.play();}
