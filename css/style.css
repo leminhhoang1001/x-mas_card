@@ -1,0 +1,1245 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css2?family=Oooh+Baby');
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+:root {
+	--red4: hsl(345,100%,23%);
+	--white: hsl(0,0%,100%);
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+p {
+  margin: 0;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+body {
+  perspective: 250vmin;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+      0deg,
+      rgb(0 0 0 / 89%) 0%,
+      rgb(59 59 186 / 0%) 64%
+    ),
+    url(https://images.pexels.com/photos/1303086/pexels-photo-1303086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+      no-repeat 50% 50% / cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  /* width: calc(min(1400px, 90%)); */
+  width: 100vw;
+  margin: 0 auto;
+  padding-block: 3em;
+}
+
+
+.card {
+  width: 90vmin;
+  height: 70vmin;
+  position: relative;
+}
+
+.card-back {
+  transform: rotateY(-180deg);
+}
+
+.card.flipped {
+  .card-front {
+    transform: rotateY(180deg) 
+  }
+
+  .card-back {
+    transform: rotateY(0)
+  }
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  transition: all 3s;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+}
+
+.card-front {
+  cursor: pointer;
+
+}
+
+.card-front .card-content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  /* right: -48%; */
+  object-fit: cover;
+  background:url("./card-bg-01.png")
+    no-repeat 50% 50% / cover;
+  color: var(--white);
+	font: 1em/1.5 sans-serif;
+	/* height: 100vh; */
+	place-items: center;
+  font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320));
+}
+
+.card-front .card-content {
+  padding: 3vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.greeting-top {
+  align-self: flex-start;
+  background-color: #ffffffa9;
+  border-radius: 20px;
+}
+
+.greeting-top,
+.greeting-from-to {
+  padding: 1.5vmin;
+  font: normal 3.3vmin menlo, monaco, monospace;
+  position: relative;
+}
+
+.greeting-from-to {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  em {
+    font-size: 1em;
+  }
+}
+.greeting-from-to .from,
+.greeting-from-to .to{
+  background-color: #ffffffa9;
+  border-radius: 20px;
+  padding: 0.5vmin 1.5vmin;
+
+}
+.greeting-title {
+  flex: 1 1 0%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font: normal 12vmin 'Dancing Script', cursive;
+  color: #222;
+}
+
+.greeting-content {
+  flex: 1 0 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font: normal 600 4.5vmin 'Grape Nuts', cursive;
+	color: var(--white);
+  position: relative;
+	font: 1em/1.5 sans-serif;
+	height: auto;
+}
+
+
+
+main {
+	padding: 0em 0;
+}
+
+/* Main styles */
+/*Ipad ngang(1024 x 768)*/
+/* @media screen and (max-width: 1024px){
+  
+} */
+/*Ipad dọc(768 x 1024)*/
+
+/*Tablet nhỏ(480 x 640)*/
+/* @media screen and (max-width: 640px){
+  .card-front .card-content {
+    font-size: 14px;
+  }
+} */
+/*Iphone(480 x 640)*/
+/* @media screen and (max-width: 375px){
+  .card-front .card-content {
+    font-size: 10px;
+  }
+} */
+/*Smart phone nhỏ*/
+/* @media screen and (max-width: 240px){
+    
+}
+@media screen and (min-width: 1024px) {
+  .card-front .card-content {
+    font-size: 30px;
+  }
+  
+} */
+.greeting,
+.holly {
+	display: block;
+	margin: auto;
+}
+.greeting {
+	width: 38vmin;
+	height: auto;
+}
+.greeting__merry {
+	animation: merry 1.5s 1.2s cubic-bezier(0.1,0,0.9,1) forwards;
+	stroke-dashoffset: 345;
+}
+.greeting__christmas {
+	animation: christmas 2.7s 2.7s cubic-bezier(0.05,0,0.95,1) forwards;
+	stroke-dashoffset: 453;
+}
+.greeting__i {
+	animation: dot 0.1s 5.4s ease-in-out forwards;
+	transform: scale(0);
+	transform-origin: 57px 57px;
+}
+.greeting__t {
+	animation: line 0.1s 5.55s ease-in-out forwards;
+	stroke-dashoffset: 22;
+}
+.greeting__exclamation1 {
+	animation: line 0.1s 5.7s ease-in-out forwards;
+	stroke-dashoffset: 22;
+}
+.greeting__exclamation2 {
+	animation: dot 0.1s 5.85s ease-in-out forwards;
+	transform: scale(0);
+	transform-origin: 152px 73px;
+}
+.holly {
+	margin-bottom: 0.5em;
+	width: 30vmin;
+	height: auto;
+}
+.holly__berry {
+	animation: berry1 0.3s ease-in-out forwards;
+	transform-origin: 12px 24px;
+}
+.holly__berry--1 {
+	animation-delay: 0.75s;
+	transform: translate(68px,66px) rotate(120deg) scale(0);
+}
+.holly__berry--2 {
+	animation-name: berry2;
+	animation-delay: 0.6s;
+	transform: translate(68px,66px) rotate(-120deg) scale(0);
+}
+.holly__berry--3 {
+	animation-name: berry3;
+	animation-delay: 0.45s;
+	transform: translate(68px,66px) scale(0);
+}
+.holly__leaf {
+	animation: leaf1 0.3s 0.15s ease-in-out forwards;
+	transform-origin: 30px 100px;
+}
+.holly__leaf--1 {
+	transform: translate(50px,0) scale(0);
+}
+.holly__leaf--2 {
+	animation-name: leaf2;
+	transform: translate(50px,0) rotate(-50deg) scale(0);
+}
+.holly__leaf--3 {
+	animation-name: leaf3;
+	transform: translate(50px,0) rotate(50deg) scale(0);
+}
+.holly__vein {
+	animation: vein1 0.9s 0.15s ease-in-out forwards;
+}
+.holly__vein--1 {
+	stroke-dashoffset: 80;
+}
+.holly__vein--2 {
+	animation-name: vein2;
+	stroke-dashoffset: 48;
+}
+.holly__vein--3 {
+	animation-name: vein3;
+	stroke-dashoffset: 47;
+}
+.holly__vein--4 {
+	animation-name: vein4;
+	stroke-dashoffset: 74;
+}
+.holly__vein--5 {
+	animation-name: vein5;
+	stroke-dashoffset: 70;
+}
+
+/* Animations */
+@keyframes berry1 {
+	from { transform: translate(68px,66px) rotate(120deg) scale(0); }
+	33.33% { transform: translate(68px,66px) rotate(120deg) scale(0.75,1.25); }
+	66.67% { transform: translate(68px,66px) rotate(120deg) scale(1.125,0.875); }
+	to { transform: translate(68px,66px) rotate(120deg) scale(1); }
+}
+@keyframes berry2 {
+	from { transform: translate(68px,66px) rotate(-120deg) scale(0); }
+	33.33% { transform: translate(68px,66px) rotate(-120deg) scale(0.75,1.25); }
+	66.67% { transform: translate(68px,66px) rotate(-120deg) scale(1.125,0.875); }
+	to { transform: translate(68px,66px) rotate(-120deg) scale(1); }
+}
+@keyframes berry3 {
+	from { transform: translate(68px,66px) scale(0); }
+	33.33% { transform: translate(68px,66px) scale(0.75,1.25); }
+	66.67% { transform: translate(68px,66px) scale(1.125,0.875); }
+	to { transform: translate(68px,66px) scale(1); }
+}
+@keyframes leaf1 {
+	from { transform: translate(50px,0) rotate(0deg) scale(0); }
+	33.33% { transform: translate(50px,0) rotate(0deg) scale(1); }
+	66.67% { transform: translate(50px,0) rotate(0deg) scale(1.25,0.875); }
+	to { transform: translate(50px,0) rotate(0deg) scale(1); }
+}
+@keyframes leaf2 {
+	from { transform: translate(50px,0) rotate(-50deg) scale(0); }
+	33.33% { transform: translate(50px,0) rotate(-50deg) scale(1); }
+	66.67% { transform: translate(50px,0) rotate(-50deg) scale(1.25,0.875); }
+	to { transform: translate(50px,0) rotate(-50deg) scale(1); }
+}
+@keyframes leaf3 {
+	from { transform: translate(50px,0) rotate(50deg) scale(0); }
+	33.33% { transform: translate(50px,0) rotate(50deg) scale(1); }
+	66.67% { transform: translate(50px,0) rotate(50deg) scale(1.25,0.875); }
+	to { transform: translate(50px,0) rotate(50deg) scale(1); }
+}
+@keyframes vein1 {
+	from { stroke-dashoffset: 80; }
+	33.33%, to { stroke-dashoffset: 0; }
+}
+@keyframes vein2 {
+	from { stroke-dashoffset: 48; }
+	26%, to { stroke-dashoffset: 0; }
+}
+@keyframes vein3 {
+	from { stroke-dashoffset: 47; }
+	26%, to { stroke-dashoffset: 0; }
+}
+@keyframes vein4 {
+	from { stroke-dashoffset: 74; }
+	31%, to { stroke-dashoffset: 0; }
+}
+@keyframes vein5 {
+	from { stroke-dashoffset: 70; }
+	31%, to { stroke-dashoffset: 0; }
+}
+@keyframes merry {
+	from { stroke-dashoffset: 345; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes christmas {
+	from { stroke-dashoffset: 453; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes dot {
+	from { transform: scale(0); }
+	to { transform: scale(1); }
+}
+@keyframes line {
+	from { stroke-dashoffset: 22; }
+	to { stroke-dashoffset: 0; }
+}
+
+.card-front .tap-hint {
+  display: block;
+  width: 6vmin;
+  height: 6vmin;
+  position: absolute;
+  top: 8vmin;
+  right: 8vmin;
+  border-radius: 50%;
+  background: rgba(18, 221, 11, 0.6);
+  box-shadow: 0 0 0vmin 2vmin rgba(130, 240, 126, 0.3);
+  animation: tap-hint 2s infinite;
+}
+.card-front .tap-hint p{
+  font: normal 1.5vmin 'Lobster', cursive;
+  transform: translate(0%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fdfafac2;
+  position: relative;
+}
+@keyframes tap-hint {
+  33% {
+    transform: scale(1.5);
+  }
+  50% {
+    box-shadow: 0 0 0.5vmin 1vmin rgba(121, 236, 121, 0.2);
+  }
+}
+
+.card-back {
+  background-image:
+  repeating-linear-gradient(45deg, rgb(189, 9, 45) 0%, rgb(223, 33, 71) 2.5%, #057905 2.5%, #22c222 6%);
+  box-shadow: inset 0 2.5vmin 2.5vmin rgba(0,0,0, 0.125);
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2.5vmin;
+    bottom: 2.5vmin;
+    left: 2.5vmin;
+    right: 2.5vmin;
+    background:  var(--red4);
+    background:url("./card-bg-01.png")
+    no-repeat 50% 50% / cover;
+    border-radius: 10px;
+    /* background: transparent url(https://img.freepik.com/free-photo/old-paper-texture-background_118047-1365.jpg?size=626&ext=jpg) 50% 50% no-repeat;
+    background-size: cover; */
+  }
+}
+
+.card-back .card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* Santa front card */
+
+.window {
+  width: 34vmin;
+  height: 34vmin;
+  background: #a0d5d3;
+  position: relative;
+
+  /* top: 50%;
+  left: 50%; */
+  border-radius: 50%;
+  margin-top: -6vmin;
+  /* -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%); */
+  /* transform: translate(50%, 50%); */
+  border: 10px solid #f8e7dc;
+  overflow: hidden; }
+
+.santa {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%); }
+  .santa .body {
+    width: 19vmin;
+    height: 21vmin;
+    background: #de2f32;
+    position: relative;
+    border-radius: 50%;
+    top: 0;
+    -webkit-animation: bodyLaugh 4s linear infinite;
+    -moz-animation: bodyLaugh 4s linear infinite;
+    -ms-animation: bodyLaugh 4s linear infinite;
+    -o-animation: bodyLaugh 4s linear infinite;
+    animation: bodyLaugh 4s linear infinite;
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+    transform: translateY(50%); }
+    .santa .body:before {
+      content: " ";
+      width: 0.7vmin;
+      height: 0.7vmin;
+      background: #f7be10;
+      border-radius: 50%;
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      box-shadow: 0px -18px 0px #f7be10, 0px 18px 0px #f7be10; }
+  .santa .head {
+    z-index: 2;
+    position: absolute;
+    bottom: 9vmin;
+    left: 50%;
+    -webkit-animation: headLaugh 4s linear infinite;
+    -moz-animation: headLaugh 4s linear infinite;
+    -ms-animation: headLaugh 4s linear infinite;
+    -o-animation: headLaugh 4s linear infinite;
+    animation: headLaugh 4s linear infinite;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    .santa .head .face {
+      width: 12vmin;
+      height: 13vmin;
+      background: #edcab0;
+      background: radial-gradient(#edcab0, #e9a982);
+      border-radius: 50%;
+      border: 3px solid #f8e7dc; }
+      .santa .head .face .redhat .whitepart {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 90%;
+        height: 3.2vmin;
+        background: #f8e7dc;
+        border-radius: 5vmin;
+        z-index: 4;
+        box-shadow: 0px 6px 0px -4px rgba(0, 0, 0, 0.1); }
+      .santa .head .face .redhat .redpart {
+        width: 12vmin;
+        height: 12vmin;
+        background: #de2f32;
+        position: absolute;
+        top: -5vmin;
+        left: 1.5vmin;
+        border-radius: 50%;
+        z-index: -1; }
+        .santa .head .face .redhat .redpart:before {
+          content: " ";
+          width: 9.5vmin;
+          height: 9.5vmin;
+          position: absolute;
+          left: 0;
+          top: 1.2vmin;
+          border-radius: 50%;
+          box-shadow: inset -8px -1px 0px -5px rgba(0, 0, 0, 0.05); }
+        .santa .head .face .redhat .redpart:after {
+          content: " ";
+          position: absolute;
+          right: 0;
+          top: 6vmin;
+          background: #de2f32;
+          width: 2vmin;
+          height: 5vmin; }
+      .santa .head .face .redhat .hatball {
+        width: 3.8vmin;
+        height: 3.8vmin;
+        background: #f8e7dc;
+        border-radius: 50%;
+        z-index: 5;
+        position: absolute;
+        right: -2vmin;
+        top: 4vmin;
+        box-shadow: 0px 6px 0px -4px rgba(0, 0, 0, 0.1); }
+      .santa .head .face .eyes {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: 5.7vmin; }
+        .santa .head .face .eyes:before, .santa .head .face .eyes:after {
+          content: " ";
+          position: absolute;
+          width: 1.5vmin;
+          height: 0.9vmin;
+          top: 0;
+          border: 0.5vmin solid #a8744f;
+          border-width: 0;
+          border-top-width: 0.5vmin;
+          border-radius: 50%; }
+        .santa .head .face .eyes:before {
+          left: -2.8vmin; }
+        .santa .head .face .eyes:after {
+          right: -2.8vmin; }
+      .santa .head .face .beard {
+        width: 5.5vmin;
+        height: 5.5vmin;
+        background: #f8e7dc;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -3vmin;
+        left: 50%;
+        -webkit-animation: beardLaugh 4s linear infinite;
+        -moz-animation: beardLaugh 4s linear infinite;
+        -ms-animation: beardLaugh 4s linear infinite;
+        -o-animation: beardLaugh 4s linear infinite;
+        animation: beardLaugh 4s linear infinite;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); }
+        .santa .head .face .beard:before, .santa .head .face .beard:after {
+          content: " ";
+          width: 8vmin;
+          height: 8vmin;
+          background: #f8e7dc;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 1.5vmin; }
+        .santa .head .face .beard:before {
+          left: -4vmin; }
+        .santa .head .face .beard:after {
+          right: -4vmin; }
+        .santa .head .face .beard .nouse {
+          width: 2.5vmin;
+          height: 2vmin;
+          border-radius: 50%;
+          background: #edcab0;
+          position: absolute;
+          z-index: 3;
+          box-shadow: inset -3px -3px 0px #e9a982;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          top: -4.2vmin; }
+        .santa .head .face .beard .mouth {
+          background: #a8744f;
+          z-index: 3;
+          position: absolute;
+          width: 1.5vmin;
+          height: 0.5vmin;
+          border-bottom-right-radius: 80px 50px;
+          border-bottom-left-radius: 80px 50px;
+          left: 50%;
+          top: 0;
+          -webkit-animation: mouthLaugh 4s linear infinite;
+          -moz-animation: mouthLaugh 4s linear infinite;
+          -ms-animation: mouthLaugh 4s linear infinite;
+          -o-animation: mouthLaugh 4s linear infinite;
+          animation: mouthLaugh 4s linear infinite;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%); }
+    .santa .head .ears:before, .santa .head .ears:after {
+      content: " ";
+      width: 2vmin;
+      height: 3vmin;
+      border-radius: 50%;
+      background: radial-gradient(#e9a982, #edcab0);
+      position: absolute;
+      top: 50%;
+      z-index: -1; }
+    .santa .head .ears:before {
+      left: -0.8vmin;
+      -webkit-transform: rotate(-10deg);
+      -moz-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+      -o-transform: rotate(-10deg);
+      transform: rotate(-10deg); }
+    .santa .head .ears:after {
+      right: -0.8vmin;
+      -webkit-transform: rotate(10deg);
+      -moz-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+      -o-transform: rotate(10deg);
+      transform: rotate(10deg); }
+
+@font-face {
+  font-family: 'Mountains of Christmas';
+  font-style: normal;
+  src: local("Mountains of Christmas"), local("MountainsofChristmas-Regular"), url(https://fonts.gstatic.com/s/mountainsofchristmas/v8/dVGBFPwd6G44IWDbQtPewylJhLDHyIrT3I5b5eGTHmw.woff2) format("woff2"); }
+.message {
+  position: relative;
+  /* left: 50%;
+  top: 50%; */
+  /* margin-top: 8vmin; */
+  /* -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%); */
+  color: #f8e7dc;
+  font-family: 'Mountains of Christmas'; }
+  .message h1 {
+    font-style: normal;
+    font-size: 10vmin;
+    margin-bottom: 0;
+    white-space: nowrap; }
+
+
+@-webkit-keyframes bodyLaugh {
+  0% {
+    top: 0; }
+
+  2% {
+    top: -0.3vmin; }
+
+  4% {
+    top: 0; }
+
+  8% {
+    top: -0.3vmin; }
+
+  10% {
+    top: 0; }
+
+  12% {
+    top: -0.3vmin; }
+
+  14% {
+    top: 0; }
+
+  18% {
+    top: -0.3vmin; }
+
+  20% {
+    top: 0; }
+
+  22% {
+    top: -0.3vmin; }
+
+  24% {
+    top: 0; }
+
+  28% {
+    top: -0.3vmin; }
+
+  30% {
+    top: 0; }
+
+  100% {
+    top: 0; } }
+@-moz-keyframes bodyLaugh {
+  0% {
+    top: 0; }
+
+  2% {
+    top: -0.3vmin; }
+
+  4% {
+    top: 0; }
+
+  8% {
+    top: -0.3vmin; }
+
+  10% {
+    top: 0; }
+
+  12% {
+    top: -0.3vmin; }
+
+  14% {
+    top: 0; }
+
+  18% {
+    top: -0.3vmin; }
+
+  20% {
+    top: 0; }
+
+  22% {
+    top: -0.3vmin; }
+
+  24% {
+    top: 0; }
+
+  28% {
+    top: -0.3vmin; }
+
+  30% {
+    top: 0; }
+
+  100% {
+    top: 0; } }
+@-ms-keyframes bodyLaugh {
+  0% {
+    top: 0px; }
+
+  2% {
+    top: -0.3vmin; }
+
+  4% {
+    top: 0; }
+
+  8% {
+    top: -0.3vmin; }
+
+  10% {
+    top: 0; }
+
+  12% {
+    top: -0.3vmin; }
+
+  14% {
+    top: 0; }
+
+  18% {
+    top: -0.3vmin; }
+
+  20% {
+    top: 0; }
+
+  22% {
+    top: -0.3vmin; }
+
+  24% {
+    top: 0; }
+
+  28% {
+    top: -0.3vmin; }
+
+  30% {
+    top: 0; }
+
+  100% {
+    top: 0; } }
+@keyframes bodyLaugh {
+  0% {
+    top: 0px; }
+
+  2% {
+    top: -0.3vmin; }
+
+  4% {
+    top: 0; }
+
+  8% {
+    top: -0.3vmin; }
+
+  10% {
+    top: 0; }
+
+  12% {
+    top: -0.3vmin; }
+
+  14% {
+    top: 0; }
+
+  18% {
+    top: -0.3vmin; }
+
+  20% {
+    top: 0; }
+
+  22% {
+    top: -0.3vmin; }
+
+  24% {
+    top: 0; }
+
+  28% {
+    top: -0.3vmin; }
+
+  30% {
+    top: 0; }
+
+  100% {
+    top: 0; } }
+@-webkit-keyframes beardLaugh {
+  0% {
+    bottom: -2.8vmin; }
+
+  2% {
+    bottom: -3vmin; }
+
+  4% {
+    bottom: -2vmin; }
+
+  8% {
+    bottom: -3vmin; }
+
+  10% {
+    bottom: -2vmin; }
+
+  12% {
+    bottom: -3vmin; }
+
+  14% {
+    bottom: -2.8vmin; }
+
+  18% {
+    bottom: -3vmin; }
+
+  20% {
+    bottom: -2.8vmin; }
+
+  22% {
+    bottom: -3vmin; }
+
+  24% {
+    bottom: -2.8vmin; }
+
+  28% {
+    bottom: -3vmin; }
+
+  30% {
+    bottom: -2.8vmin; }
+
+  100% {
+    bottom: -2.8vmin; } }
+@-moz-keyframes beardLaugh {
+  0% {
+    bottom: -2.8vmin; }
+
+  2% {
+    bottom: -3vmin; }
+
+  4% {
+    bottom: -2.8vmin; }
+
+  8% {
+    bottom: -3vmin; }
+
+  10% {
+    bottom: -2.8vmin; }
+
+  12% {
+    bottom: -3vmin; }
+
+  14% {
+    bottom: -2.8vmin; }
+
+  18% {
+    bottom: -3vmin; }
+
+  20% {
+    bottom: -2.8vmin; }
+
+  22% {
+    bottom: -3vmin; }
+
+  24% {
+    bottom: -2.8vmin; }
+
+  28% {
+    bottom: -3vmin; }
+
+  30% {
+    bottom: -2.8vmin; }
+
+  100% {
+    bottom: -2.8vmin; } }
+@-ms-keyframes beardLaugh {
+  0% {
+    bottom: -2.8vmin; }
+
+  2% {
+    bottom: -3vmin; }
+
+  4% {
+    bottom: -2.8vmin; }
+
+  8% {
+    bottom: -3vmin; }
+
+  10% {
+    bottom: -2.8vmin; }
+
+  12% {
+    bottom: -3vmin; }
+
+  14% {
+    bottom: -2.8vmin; }
+
+  18% {
+    bottom: -3vmin; }
+
+  20% {
+    bottom: -2.8vmin; }
+
+  22% {
+    bottom: -3vmin; }
+
+  24% {
+    bottom: -2.8vmin; }
+
+  28% {
+    bottom: -3vmin; }
+
+  30% {
+    bottom: -2.8vmin; }
+
+  100% {
+    bottom: -2.8vmin; } }
+@keyframes beardLaugh {
+  0% {
+    bottom: -2.8vmin; }
+
+  2% {
+    bottom: -3vmin; }
+
+  4% {
+    bottom: -2.8vmin; }
+
+  8% {
+    bottom: -3vmin; }
+
+  10% {
+    bottom: -2.8vmin; }
+
+  12% {
+    bottom: -3vmin; }
+
+  14% {
+    bottom: -2.8vmin; }
+
+  18% {
+    bottom: -3vmin; }
+
+  20% {
+    bottom: -2.8vmin; }
+
+  22% {
+    bottom: -3vmin; }
+
+  24% {
+    bottom: -2.8vmin; }
+
+  28% {
+    bottom: -3vmin; }
+
+  30% {
+    bottom: -2.8vmin; }
+
+  100% {
+    bottom: -2.8vmin; } }
+@-webkit-keyframes headLaugh {
+  0% {
+    bottom: 8.3vmin; }
+
+  45% {
+    bottom: 8.3vmin; }
+
+  50% {
+    bottom: 9vmin; }
+
+  92% {
+    bottom: 9vmin; }
+
+  98% {
+    bottom: 8.3vmin; }
+
+  100% {
+    bottom: 8.3vmin; } }
+@-moz-keyframes headLaugh {
+  0% {
+    bottom: 8.3vmin; }
+
+  45% {
+    bottom: 8.3vmin; }
+
+  50% {
+    bottom: 9vmin; }
+
+  92% {
+    bottom: 9vmin; }
+
+  98% {
+    bottom: 8.3vmin; }
+
+  100% {
+    bottom: 8.3vmin; } }
+@-ms-keyframes headLaugh {
+  0% {
+    bottom: 8.3vmin; }
+
+  45% {
+    bottom: 8.3vmin; }
+
+  50% {
+    bottom: 9vmin; }
+
+  92% {
+    bottom: 9vmin; }
+
+  98% {
+    bottom: 8.3vmin; }
+
+  100% {
+    bottom: 8.3vmin; } }
+@keyframes headLaugh {
+  0% {
+    bottom: 8.3vmin; }
+
+  45% {
+    bottom: 8.3vmin; }
+
+  50% {
+    bottom: 9vmin; }
+
+  92% {
+    bottom: 9vmin; }
+
+  98% {
+    bottom: 8.3vmin; }
+
+  100% {
+    bottom: 8.3vmin; } }
+@-webkit-keyframes mouthLaugh {
+  0% {
+    width: 2vmin; }
+
+  45% {
+    width: 2vmin; }
+
+  50% {
+    width: 1.5vmin; }
+
+  92% {
+    width: 1.5vmin; }
+
+  98% {
+    width: 2vmin; }
+
+  100% {
+    width: 2vmin; } }
+@-moz-keyframes mouthLaugh {
+  0% {
+    width: 2vmin; }
+
+  45% {
+    width: 2vmin; }
+
+  50% {
+    width: 1.5vmin; }
+
+  92% {
+    width: 1.5vmin; }
+
+  98% {
+    width: 2vmin; }
+
+  100% {
+    width: 2vmin; } }
+@-ms-keyframes mouthLaugh {
+  0% {
+    width: 2vmin; }
+
+  45% {
+    width: 2vmin; }
+
+  50% {
+    width: 1.5vmin; }
+
+  92% {
+    width: 1.5vmin; }
+
+  98% {
+    width: 2vmin; }
+
+  100% {
+    width: 2vmin; } }
+@keyframes mouthLaugh {
+  0% {
+    width: 2vmin; }
+
+  45% {
+    width: 2vmin; }
+
+  50% {
+    width: 1.5vmin; }
+
+  92% {
+    width: 1.5vmin; }
+
+  98% {
+    width: 2vmin; }
+
+  100% {
+    width: 2vmin; } }
+
+
+/* santa front card end */
+
+/* Snow fall start */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  10% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0.7;
+      transform: translateY(100vh);
+  }
+}
+
+@keyframes diagonal-fall {
+  0% {
+      opacity: 0;
+      transform: translate(0, 0);
+  }
+  10% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0.3;
+      transform: translate(10vw, 100vh);
+  }
+}
+/* Snow fall end */
+.footer{
+  position: fixed;
+  left:0;
+  bottom:0;
+  width: auto;
+
+  color: #ffffff98;
+  padding: 1vmin;
+}
