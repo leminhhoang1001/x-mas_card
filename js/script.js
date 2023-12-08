@@ -4,7 +4,7 @@ const playmusic = document.getElementById('card')
 const tapHint = document.getElementById('tap-hint')
 const iosPlatforms = ['iPhone', 'iPad', 'iPod'],platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
 const muteSound = new Howl({
-  src: ['./christmas-song.m4a'],
+  src: ['./christmas-song.m4a', './christmas-song.m4a', './christmas-song.m4a'],
   // mute: false,
   // autoplay:true,
   loop: true,
@@ -12,8 +12,6 @@ const muteSound = new Howl({
   volume: 1
 });
 muteSound.autoUnlock = false;
-const music = new Audio("./music/christmas-song.ogg");
-music.loop = true;
 card.addEventListener('click', function(e){
   e.preventDefault();
   // muteSound.play();
