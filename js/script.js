@@ -9,7 +9,7 @@ const muteSound = new Howl({
   html5: true,
   volume: 1
 });
-// muteSound.mobileAutoEnable = false;
+muteSound.autoUnlock = false;
 const music = new Audio("./music/christmas-song.ogg");
 music.loop = true;
 card.addEventListener('click', function(e){
