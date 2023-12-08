@@ -3,7 +3,7 @@ const card = document.getElementById('card')
 const tapHint = document.getElementById('tap-hint')
 const iosPlatforms = ['iPhone', 'iPad', 'iPod'],platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
 const muteSound = new Howl({
-  src: ['./christmas-song.m4a'],
+  src: ['./christmas-song.m4a','./christmas-song.m4a','./christmas-song.m4a'],
   // mute: false,
   loop: true,
   html5: true,
