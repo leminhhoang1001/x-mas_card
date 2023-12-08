@@ -114,7 +114,7 @@ body {
 .greeting-top {
   align-self: flex-start;
   background-color: #ffffffa9;
-  border-radius: 20px;
+  border-radius: 2vmin;
 }
 
 .greeting-top,
@@ -136,7 +136,7 @@ body {
 .greeting-from-to .from,
 .greeting-from-to .to{
   background-color: #ffffffa9;
-  border-radius: 20px;
+  border-radius: 2vmin;
   padding: 0.5vmin 1.5vmin;
 
 }
