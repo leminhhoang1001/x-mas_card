@@ -6,6 +6,7 @@ const muteSound = new Howl({
   src: ['./christmas-song.ogg'],
   mute: false,
   loop: true,
+  html5: true,
   volume: 1
 });
 muteSound.mobileAutoEnable = false;
