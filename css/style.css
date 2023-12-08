@@ -1202,7 +1202,7 @@ main {
   position: absolute;
   background-color: white;
   border-radius: 50%;
-  opacity: 0.9;
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -1215,7 +1215,7 @@ main {
       opacity: 1;
   }
   100% {
-      opacity: 0.7;
+      opacity: 0.5;
       transform: translateY(100vh);
   }
 }
@@ -1229,7 +1229,7 @@ main {
       opacity: 1;
   }
   100% {
-      opacity: 0.3;
+      opacity: 0.25;
       transform: translate(10vw, 100vh);
   }
 }
