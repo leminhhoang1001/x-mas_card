@@ -1,8 +1,7 @@
+!(function(){
 const card = document.getElementById('card')
 const tapHint = document.getElementById('tap-hint')
-card.addEventListener('click', function(e){
-  e.preventDefault();
-  const iosPlatforms = ['iPhone', 'iPad', 'iPod'],platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
+const iosPlatforms = ['iPhone', 'iPad', 'iPod'],platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
 const muteSound = new Howl({
   src: ['./christmas-song.ogg'],
   mute: false,
@@ -12,7 +11,8 @@ const muteSound = new Howl({
 muteSound.mobileAutoEnable = false;
 const music = new Audio("./music/christmas-song.ogg");
 music.loop = true;
-
+card.addEventListener('click', function(e){
+  e.preventDefault();
   if(iosPlatforms.indexOf(platform) !== -1){muteSound.play();}
   else{music.play();}
   $('html, body').css({overflow: 'hidden'});
@@ -28,3 +28,4 @@ music.loop = true;
 var date = moment();
 document.getElementById("date").innerHTML = date.format('DD.MM.YYYY');
 
+}());
