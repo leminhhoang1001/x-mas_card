@@ -25,7 +25,6 @@ strong {
 
 body {
   perspective: 250vmin;
-  background: rgb(2, 0, 36);
   background: linear-gradient(
       0deg,
       rgb(0 0 0 / 89%) 0%,
@@ -33,7 +32,7 @@ body {
     ),
     url(https://images.pexels.com/photos/1303086/pexels-photo-1303086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
       no-repeat 50% 50% / cover;
-  min-height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +42,7 @@ body {
   width: 100vw;
   margin: 0 auto;
   padding-block: 3em;
+  overflow: hidden;
 }
 
 
@@ -119,6 +119,7 @@ body {
 
 .greeting-top,
 .greeting-from-to {
+  color: #002705;
   padding: 1.5vmin;
   font: normal 3.3vmin menlo, monaco, monospace;
   position: relative;
@@ -207,7 +208,7 @@ main {
 	margin: auto;
 }
 .greeting {
-	width: 38vmin;
+	width: 44vmin;
 	height: auto;
 }
 .greeting__merry {
@@ -435,51 +436,17 @@ main {
 }
 
 /* Snow fall start */
-.snow-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  pointer-events: none;
-}
-
 .snowflake {
   position: absolute;
-  background-color: white;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(#ffffff, white); /* Workaround for Chromium's selective color inversion */
   border-radius: 50%;
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-@keyframes fall {
-  0% {
-      opacity: 0;
-      transform: translateY(0);
-  }
-  10% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0.5;
-      transform: translateY(100vh);
-  }
-}
-
-@keyframes diagonal-fall {
-  0% {
-      opacity: 0;
-      transform: translate(0, 0);
-  }
-  10% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0.25;
-      transform: translate(10vw, 100vh);
-  }
+  filter: drop-shadow(0 0 9px white);
+  box-shadow: 0 0 0.7vmin 0.2vmin #ffffff;
+  z-index: 9999999;
 }
 /* Snow fall end */
 .footer{
@@ -494,13 +461,14 @@ main {
 
 /* Kissing */
 
-.container {
+.container-kissing {
   width: 45vmin;
   height: 45vmin;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 40%;
   left: 50%;
-  background-color: #fffb028f;
+  background-color: #faf744e3;
+  box-shadow: 0 0 8vmin 3vmin #fffc3e65;
   border-radius: 100%;
   overflow: hidden;
   content: "";
@@ -1360,21 +1328,21 @@ main {
 
 /* Santa front card*/
 
-/*.window {
+.window {
   width: 34vmin;
   height: 34vmin;
   background: #a0d5d3;
   position: relative;
 
- //  top: 50%;
- // left: 50%; 
+ /* //  top: 50%;
+ // left: 50%;  */
   border-radius: 50%;
   margin-top: -6vmin;
- // -webkit-transform: translate(-50%, -50%);
+ /* // -webkit-transform: translate(-50%, -50%);
  // -moz-transform: translate(-50%, -50%);
  // -ms-transform: translate(-50%, -50%);
  // -o-transform: translate(-50%, -50%); 
- // transform: translate(50%, 50%); 
+ // transform: translate(50%, 50%);  */
   border: 10px solid #f8e7dc;
   overflow: hidden; }
 
@@ -1610,14 +1578,14 @@ main {
   src: local("Mountains of Christmas"), local("MountainsofChristmas-Regular"), url(https://fonts.gstatic.com/s/mountainsofchristmas/v8/dVGBFPwd6G44IWDbQtPewylJhLDHyIrT3I5b5eGTHmw.woff2) format("woff2"); }
 .message {
   position: relative;
-//left: 50%;
+/* //left: 50%;
 //top: 50%;
 //margin-top: 8vmin;
 //-webkit-transform: translateX(-50%);
 //-moz-transform: translateX(-50%);
 //-ms-transform: translateX(-50%);
 //-o-transform: translateX(-50%);
-//transform: translateX(-50%);
+//transform: translateX(-50%); */
   color: #f8e7dc;
   font-family: 'Mountains of Christmas'; }
   .message h1 {
@@ -2107,6 +2075,6 @@ main {
 
   100% {
     width: 2vmin; } }
- */
+ 
 
 /* santa front card end */

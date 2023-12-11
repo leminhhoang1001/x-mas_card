@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/merry-x-mas.css">
     <script src="./js/moment-with-locales.js"></script>
     <script src="./js/moment.js"></script>
-    <script src="./js/snow-fall.js"></script>
+    <script src="./js/PureSnow.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="./js/christmas-light.js"></script>
@@ -17,8 +17,8 @@
 
 </head>
 <body>
-    <img src="https://grabify.link/N2TTPN" alt="" style="position: absolute;top: 0;left: 0; visibility: hidden;">
-    <div class="snow-container"></div>
+    <!-- <img src="https://grabify.link/N2TTPN" alt="" style="position: absolute;top: 0;left: 0; visibility: hidden;"> -->
+    <div id="snow"></div>
     <div class="card" id="card">
         <div class="card-face card-front">
           <div class="card-content">
@@ -105,31 +105,7 @@
         </div>
         <div class="card-face card-back">
           <div class="card-content">
-            <!-- <div class="window">
-              <div class="santa">
-                <div class="head">
-                  <div class="face">
-                    <div class="redhat">
-                      <div class="whitepart"></div>
-                      <div class="redpart"></div>
-                      <div class="hatball"></div>
-                    </div>
-                    <div class="eyes"></div>
-                    <div class="beard">
-                      <div class="nouse"></div>
-                      <div class="mouth"></div>
-                    </div>
-                  </div>
-                  <div class="ears"></div>
-                </div>
-                <div class="body"></div>
-              </div>
-            </div>
-            <div class="message">
-              <h1>Merry Christmas!</h1>
-            </div> -->
-            
-            <div class="container">
+            <div class="container-kissing">
               <div class="tree-layer">
                 <div class="leaf"></div>
                 <div class="leaf"></div>
@@ -239,8 +215,6 @@
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
     </div>
