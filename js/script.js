@@ -2,7 +2,11 @@
 const card = document.getElementById('card')
 const playmusic = document.getElementById('card')
 const tapHint = document.getElementById('tap-hint')
-const iosPlatforms = ['iPhone', 'iPad', 'iPod'],platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
+//Mute Toggle		
+$(document).on('click', '.toggle-sound', function(e) {
+  $(this).toggleClass('sound-mute');
+});
+
 const muteSound = new Howl({
   src: ['./christmas-song.m4a', './christmas-song.m4a', './christmas-song.m4a'],
   // mute: false,

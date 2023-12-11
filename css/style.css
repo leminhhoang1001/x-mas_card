@@ -433,23 +433,948 @@ main {
   align-items: center;
   flex-direction: column;
 }
-/* Santa front card */
 
-.window {
+/* Snow fall start */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  10% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0.5;
+      transform: translateY(100vh);
+  }
+}
+
+@keyframes diagonal-fall {
+  0% {
+      opacity: 0;
+      transform: translate(0, 0);
+  }
+  10% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0.25;
+      transform: translate(10vw, 100vh);
+  }
+}
+/* Snow fall end */
+.footer{
+  position: fixed;
+  left:0;
+  bottom:0;
+  width: auto;
+
+  color: #ffffff98;
+  padding: 1vmin;
+}
+
+/* Kissing */
+
+.container {
+  width: 45vmin;
+  height: 45vmin;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: #fffb028f;
+  border-radius: 100%;
+  overflow: hidden;
+  content: "";
+  position: absolute;
+}
+
+.shadow {
+  position: relative;
+  width: 80%;
+  height: 20%;
+  border-radius: 100%;
+  opacity: 0.1;
+  background-color: black;
+}
+
+.tree-layer {
+  width: 30vmin;
+  height: auto;
+  transform: translateX(-50%);
+  left: 50%;
+  display: flex;
+  top: -10%;
+  content: "";
+  position: absolute;
+}
+.tree-layer .leaf {
+  position: relative;
+  width: 6vmin;
+  height: 20vmin;
+  background-color: #58b1a1;
+  border-radius: 20vmin;
+  margin: auto -3%;
+  left: 4.5vmin;
+  top: 1vmin;
+}
+.tree-layer .leaf:nth-child(1) {
+  transform: rotate(45deg) scale(1.1);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer .leaf:nth-child(2) {
+  transform: rotate(22.5deg) scale(1.1);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer .leaf:nth-child(3) {
+  transform: rotate(0deg) scale(1.1);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer .leaf:nth-child(4) {
+  transform: rotate(-22.5deg) scale(1.1);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer .leaf:nth-child(5) {
+  transform: rotate(-45deg) scale(1.1);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(1) {
+  z-index: 3;
+  animation: dipLayer 3s infinite;
+}
+.tree-layer:nth-child(1) > .leaf:nth-child(2) {
+  animation: dipBranch 3s 1.6s infinite;
+}
+.tree-layer:nth-child(1) > .leaf:nth-child(4) {
+  animation: dipBranch2 3s 0.5s infinite;
+}
+.tree-layer:nth-child(2) {
+  z-index: 3;
+  animation: dipLayer 3s ease-in-out infinite;
+}
+.tree-layer:nth-child(2) > .leaf {
+  background-color: #f1f1f1;
+  margin: auto -5%;
+  left: 7vmin;
+  top: -5vmin;
+}
+.tree-layer:nth-child(2) > .leaf:nth-child(1) {
+  transform: rotate(45deg) scale(0.8);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(2) > .leaf:nth-child(2) {
+  transform: rotate(22.5deg) scale(0.8);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(2) > .leaf:nth-child(3) {
+  transform: rotate(0deg) scale(0.8);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(2) > .leaf:nth-child(4) {
+  transform: rotate(-22.5deg) scale(0.8);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(2) > .leaf:nth-child(5) {
+  transform: rotate(-45deg) scale(0.8);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(3) {
+  top: 12%;
+  animation: dipLayer 3s ease-in-out infinite;
+}
+.tree-layer:nth-child(3) > .leaf {
+  background-color: #4faa9a;
+}
+.tree-layer:nth-child(3) > .leaf:nth-child(1) {
+  transform: rotate(45deg) scale(1.5);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(3) > .leaf:nth-child(2) {
+  transform: rotate(22.5deg) scale(1.5);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(3) > .leaf:nth-child(3) {
+  transform: rotate(0deg) scale(1.5);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(3) > .leaf:nth-child(4) {
+  transform: rotate(-22.5deg) scale(1.5);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(3) > .leaf:nth-child(5) {
+  transform: rotate(-45deg) scale(1.5);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(4) {
+  animation: dipLayer 3s infinite;
+}
+.tree-layer:nth-child(4) > .leaf {
+  background-color: #f1f1f1;
+  margin: auto -5%;
+  left: 7vmin;
+  top: 5vmin;
+}
+.tree-layer:nth-child(4) > .leaf:nth-child(1) {
+  transform: rotate(45deg) scale(1.2);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(4) > .leaf:nth-child(2) {
+  transform: rotate(22.5deg) scale(1.2);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(4) > .leaf:nth-child(3) {
+  transform: rotate(0deg) scale(1.2);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(4) > .leaf:nth-child(4) {
+  transform: rotate(-22.5deg) scale(1.2);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(4) > .leaf:nth-child(5) {
+  transform: rotate(-45deg) scale(1.2);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(5) {
+  z-index: -1;
+}
+.tree-layer:nth-child(5) > .leaf {
+  background-color: #f1f1f1;
+  margin: auto -5%;
+  left: 7vmin;
+  top: 18vmin;
+}
+.tree-layer:nth-child(5) > .leaf:nth-child(1) {
+  transform: rotate(45deg) scale(1.5);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(5) > .leaf:nth-child(2) {
+  transform: rotate(22.5deg) scale(1.5);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(5) > .leaf:nth-child(3) {
+  transform: rotate(0deg) scale(1.5);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(5) > .leaf:nth-child(4) {
+  transform: rotate(-22.5deg) scale(1.5);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(5) > .leaf:nth-child(5) {
+  transform: rotate(-45deg) scale(1.5);
+  box-shadow: inset 0vmin -1vmin #d8d8d8;
+}
+.tree-layer:nth-child(6) {
+  z-index: -2;
+  top: 40%;
+}
+.tree-layer:nth-child(6) > .leaf {
+  background-color: #4ca394;
+}
+.tree-layer:nth-child(6) > .leaf:nth-child(1) {
+  transform: rotate(45deg) scale(1.8);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(6) > .leaf:nth-child(2) {
+  transform: rotate(22.5deg) scale(1.8);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(6) > .leaf:nth-child(3) {
+  transform: rotate(0deg) scale(1.8);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(6) > .leaf:nth-child(4) {
+  transform: rotate(-22.5deg) scale(1.8);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+.tree-layer:nth-child(6) > .leaf:nth-child(5) {
+  transform: rotate(-45deg) scale(1.8);
+  box-shadow: inset 0vmin -1.5vmin #449284, 0vmin 1.5vmin #3c8074;
+}
+
+.ornaments {
+  width: 100%;
+  height: 40%;
+  top: 40%;
+  z-index: 2;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box {
+  transform-origin: top;
+  top: -3vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(1) {
+  left: 18%;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(1) > .ornament {
+  z-index: 2;
+  position: relative;
+  width: 10vmin;
+  height: 10vmin;
+  box-shadow: 0vmin 0.5vmin 0.2vmin rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  border: 0.1vmin solid #ff5500;
+  background-color: #cd4626;
+  background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
+  animation: fall 3s ease-in-out infinite;
+}
+.ornaments .ornament-box:nth-child(1) > .ornament > .face > .eyes {
+  left: 0.8vmin;
+  animation: removeSmile 3s 0.5s infinite, blink 3s ease-in-out infinite;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(1) > .ornament > .face > .smile {
+  left: 4.5vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(1) > .ornament > .face > .smile:before, .ornaments .ornament-box:nth-child(1) > .ornament > .face > .smile:after {
+  width: 1vmin;
+  height: 1vmin;
+  background-color: pink;
+  opacity: 0.2;
+  border-radius: 100%;
+  top: 1.5vmin;
+  animation: blush 3s infinite;
+
+}
+.ornaments .ornament-box:nth-child(1) > .ornament > .face > .smile:before {
+  left: -3vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(1) > .ornament > .face > .smile:after {
+  left: 3.5vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(1) > .string {
+  animation: string-stretch 3s ease-in-out infinite;
+}
+.ornaments .ornament-box:nth-child(2) {
+  animation: pendulum 3s ease-in-out infinite;
+  left: 60%;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(2) > .ornament {
+  z-index: 2;
+  position: relative;
+  width: 10vmin;
+  height: 10vmin;
+  border-radius: 100%;
+  background-color: #fe9e26;
+  border: 0.1vmin solid #ffd500;
+  box-shadow: 0vmin 0.5vmin 0.2vmin rgba(0, 0, 0, 0.2);
+  background-image: radial-gradient(100% 115% at 25% 25%, #fff, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffea80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ffe666 98%);
+}
+.ornaments .ornament-box:nth-child(2) > .ornament > .face > .eyes {
+  left: -1vmin;
+  animation: removeSmile 3s infinite, blink 2s 0.5s ease-in-out infinite;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(2) > .ornament > .face > .smile {
+  left: 2.8vmin;
+  animation: removeSmile 3s infinite;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(2) > .ornament > .face .blush {
+  left: 3.8vmin;
+  top: 4vmin;
+  animation: blush 3s infinite;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(2) > .ornament > .face .blush:before, .ornaments .ornament-box:nth-child(2) > .ornament > .face .blush:after {
+  width: 1vmin;
+  height: 1vmin;
+  background-color: #cd4626;
+  border-radius: 100%;
+  top: 1.5vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(2) > .ornament > .face .blush:before {
+  left: -3vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .ornament-box:nth-child(2) > .ornament > .face .blush:after {
+  left: 3.5vmin;
+  content: "";
+  position: absolute;
+}
+.ornaments .string {
+  position: relative;
+  width: 0.5vmin;
+  height: 5vmin;
+  border: 0.2vmin solid #2a4930;
+  border-radius: 20vmin;
+  transform: perspective(1vmin) rotateX(5deg);
+  left: 4.8vmin;
+  transform-origin: top;
+}
+.ornaments .string:after {
+  width: 1.2vmin;
+  height: 1.2vmin;
+  background-color: #ff8da1;
+  top: 60%;
+  left: -80%;
+  content: "";
+  position: absolute;
+}
+.ornaments .face {
+  width: 100%;
+  height: 70%;
+  content: "";
+  position: absolute;
+}
+.ornaments .face .eyes {
+  display: flex;
+  justify-content: space-between;
+  top: 50%;
+  content: "";
+  position: absolute;
+}
+.ornaments .face .eyes:before, .ornaments .face .eyes:after {
+  position: relative;
+  width: 2vmin;
+  height: 2vmin;
+  background-color: #18281a;
+  background-image: radial-gradient(ellipse 0.3vmin 0.3vmin at 50% 20%, #fff 99%, transparent), radial-gradient(ellipse 0.1vmin 0.1vmin at 20% 40%, #fff 99%, transparent);
+  border-radius: 100%;
+  margin: 0 1.5vmin;
+  content: "";
+}
+.ornaments .face .smile {
+  width: 2vmin;
+  height: 2vmin;
+  border-radius: 100%;
+  border: 0.3vmin solid transparent;
+  border-bottom: 0.4vmin solid #18281a;
+  top: 55%;
+  content: "";
+  position: absolute;
+}
+
+.lovey-dovey-eyes {
+  display: flex;
+  justify-content: space-between;
+  top: 3vmin;
+  left: -1vmin;
+  animation: kiss 3s infinite;
+  content: "";
+  position: absolute;
+}
+.lovey-dovey-eyes:before, .lovey-dovey-eyes:after {
+  position: relative;
+  width: 2vmin;
+  height: 2vmin;
+  border-radius: 100%;
+  border: 0.5vmin solid transparent;
+  border-bottom: 0.5vmin solid #18281a;
+  margin: 0 1vmin;
+  top: -1vmin;
+  content: "";
+}
+
+.sly-brows {
+  display: flex;
+  justify-content: space-between;
+  top: 3vmin;
+  left: -1.8vmin;
+  opacity: 0;
+  animation: kiss 3s infinite;
+  content: "";
+  position: absolute;
+}
+.sly-brows:before, .sly-brows:after {
+  position: relative;
+  width: 2vmin;
+  height: 2vmin;
+  left: 0.9vmin;
+  top: -2.5vmin;
+  border-radius: 100%;
+  border: 0.2vmin solid transparent;
+  border-bottom: 0.2vmin solid #18281a;
+  margin: 0 1.2vmin;
+  content: "";
+}
+.sly-brows:before {
+  transform: rotate(-20deg);
+  content: "";
+}
+.sly-brows:after {
+  transform: rotate(20deg);
+  content: "";
+}
+
+.shy-brows {
+  display: flex;
+  justify-content: space-between;
+  top: 3vmin;
+  left: 0.3vmin;
+  opacity: 0;
+  animation: kiss 3s 0.5s infinite;
+  content: "";
+  position: absolute;
+}
+.shy-brows:before, .shy-brows:after {
+  position: relative;
+  width: 2vmin;
+  height: 2vmin;
+  left: 0.9vmin;
+  top: -2.5vmin;
+  border-radius: 100%;
+  border: 0.2vmin solid transparent;
+  border-bottom: 0.2vmin solid #18281a;
+  margin: 0 1.2vmin;
+  content: "";
+}
+.shy-brows:before {
+  transform: rotate(-20deg);
+}
+.shy-brows:after {
+  transform: rotate(20deg);
+}
+
+.shy-eyes {
+  display: flex;
+  justify-content: space-between;
+  top: 3vmin;
+  left: 0.3vmin;
+  opacity: 0;
+  animation: kiss 3s 0.5s infinite;
+  content: "";
+  position: absolute;
+}
+.shy-eyes:before, .shy-eyes:after {
+  position: relative;
+  width: 2vmin;
+  height: 2vmin;
+  left: 0.6vmin;
+  top: 0.8vmin;
+  border-radius: 100%;
+  border: 0.5vmin solid transparent;
+  border-top: 0.5vmin solid #18281a;
+  margin: 0 1vmin;
+  content: "";
+}
+
+.kiss {
+  display: flex;
+  flex-direction: column;
+  left: 3vmin;
+  top: 5vmin;
+  animation: kiss 3s infinite;
+  content: "";
+  position: absolute;
+}
+.kiss .lip {
+  position: relative;
+  width: 1.5vmin;
+  height: 1vmin;
+  border: 0.1vmin solid transparent;
+  border-left: 0.4vmin solid #18281a;
+  border-radius: 100%;
+  margin-top: -0.1vmin;
+  content: "";
+}
+
+.lights, .lights-3, .lights-2 {
+  width: 100%;
+  height: 5vmin;
+  top: 20%;
+  z-index: 3;
+  content: "";
+  position: absolute;
+}
+.lights .cord, .lights-3 .cord, .lights-2 .cord {
+  width: 73%;
+  height: 2vmin;
+  border-radius: 100%;
+  border-bottom: 0.2vmin solid #50895a;
+  left: 8vmin;
+  transform: rotate(10deg);
+  content: "";
+  position: absolute;
+}
+.lights .cord .light, .lights-3 .cord .light, .lights-2 .cord .light {
+  width: 1vmin;
+  height: 1vmin;
+  border-radius: 1vmin;
+  animation: flicker 2s linear infinite;
+  content: "";
+  position: absolute;
+}
+.lights .cord .light:nth-child(1), .lights-3 .cord .light:nth-child(1), .lights-2 .cord .light:nth-child(1) {
+  top: 1vmin;
+  left: 0;
+  background-color: #e1ffbc;
+  box-shadow: 0vmin 0vmin 1vmin #e1ffbc;
+  content: "";
+  position: absolute;
+}
+.lights .cord .light:nth-child(2), .lights-3 .cord .light:nth-child(2), .lights-2 .cord .light:nth-child(2) {
+  top: 1.05vmin;
+  left: 5vmin;
+  background-color: #fdf8d1;
+  box-shadow: 0vmin 0vmin 1vmin #fdf8d1;
+  content: "";
+  position: absolute;
+}
+.lights .cord .light:nth-child(3), .lights-3 .cord .light:nth-child(3), .lights-2 .cord .light:nth-child(3) {
+  top: 1.1vmin;
+  left: 10vmin;
+  background-color: #e1ffbc;
+  box-shadow: 0vmin 0vmin 1vmin #e1ffbc;
+  content: "";
+  position: absolute;
+}
+.lights .cord .light:nth-child(4), .lights-3 .cord .light:nth-child(4), .lights-2 .cord .light:nth-child(4) {
+  top: 1.15vmin;
+  left: 15vmin;
+  background-color: #ffd5f7;
+  box-shadow: 0vmin 0vmin 1vmin #ffd5f7;
+  content: "";
+  position: absolute;
+}
+.lights .cord .light:nth-child(5), .lights-3 .cord .light:nth-child(5), .lights-2 .cord .light:nth-child(5) {
+  top: 1.2vmin;
+  left: 20vmin;
+  background-color: #c4f4ff;
+  box-shadow: 0vmin 0vmin 1vmin #c4f4ff;
+}
+.lights .cord .light:nth-child(6), .lights-3 .cord .light:nth-child(6), .lights-2 .cord .light:nth-child(6) {
+  top: 1.25vmin;
+  left: 25vmin;
+  background-color: #fdf8d1;
+  box-shadow: 0vmin 0vmin 1vmin #fdf8d1;
+}
+.lights .cord .light:nth-child(7), .lights-3 .cord .light:nth-child(7), .lights-2 .cord .light:nth-child(7) {
+  top: 1.3vmin;
+  left: 30vmin;
+  background-color: #ffd5f7;
+  box-shadow: 0vmin 0vmin 1vmin #ffd5f7;
+}
+
+.dip {
+  animation: dipLayer 3s infinite;
+  left: 50%;
+}
+
+.lights-2 {
+  top: 55%;
+  width: 125%;
+  left: 45%;
+  z-index: 1;
+}
+.lights-2 > .cord {
+  transform: rotate(-185deg);
+}
+.lights-2.dip {
+  animation: dipLayer 3s 0.3s infinite;
+  left: 45%;
+}
+
+.lights-3 {
+  top: 80%;
+  width: 110%;
+  left: -1vmin;
+}
+.lights-3 > .cord {
+  transform: rotate(-8deg);
+}
+
+.tear {
+  position: absolute;
+  width: 1.5vmin;
+  height: 1.5vmin;
+  border-radius: 0 50% 50% 50%;
+  background: #77e0ee;
+  top: 1vmin;
+  z-index: 6;
+  left: 0.9vmin;
+  opacity: 0;
+  transform: rotate(50deg);
+  animation: sweat 3s infinite 2.5s;
+}
+
+@keyframes sweat {
+  from {
+    opacity: 1;
+    transform: translateY(0vmin) rotate(50deg);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(5vmin) rotate(50deg);
+  }
+}
+@keyframes pendulum {
+  0% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+@keyframes dipBranch {
+  50% {
+    transform: rotate(20deg) scale(1.1);
+  }
+}
+@keyframes dipBranch2 {
+  50% {
+    transform: rotate(-30deg) scale(1.05);
+  }
+}
+@keyframes dipLayer {
+  0% {
+    transform: translate(-50%, 0.3vmin);
+  }
+  50% {
+    transform: translate(-50%, -0.3vmin);
+  }
+  100% {
+    transform: translate(-50%, 0.3vmin);
+  }
+}
+@keyframes kiss {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes removeSmile {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes string-stretch {
+  0% {
+    transform: perspective(1vmin) rotateX(5deg) scaleY(1.2);
+  }
+  50% {
+    transform: perspective(1vmin) rotateX(5deg) scaleY(1);
+  }
+  100% {
+    transform: perspective(1vmin) rotateX(5deg) scaleY(1.2);
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translateY(1.5vmin);
+  }
+  50% {
+    transform: translateY(0vmin);
+  }
+  100% {
+    transform: translateY(1.5vmin);
+  }
+}
+@keyframes blush {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    transform: scaleY(1);
+  }
+  18% {
+    transform: scaleY(1);
+  }
+  20% {
+    transform: scaleY(0);
+  }
+  25% {
+    transform: scaleY(1);
+  }
+  38% {
+    transform: scaleY(1);
+  }
+  40% {
+    transform: scaleY(0);
+  }
+  45% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: scaleY(1);
+  }
+}
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.9;
+  }
+  6% {
+    opacity: 0.85;
+  }
+  8% {
+    opacity: 0.95;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  11% {
+    opacity: 0.922;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  14% {
+    opacity: 0.95;
+  }
+  16% {
+    opacity: 0.98;
+  }
+  17% {
+    opacity: 0.9;
+  }
+  19% {
+    opacity: 0.93;
+  }
+  20% {
+    opacity: 0.99;
+  }
+  24% {
+    opacity: 1;
+  }
+  26% {
+    opacity: 0.94;
+  }
+  28% {
+    opacity: 0.98;
+  }
+  37% {
+    opacity: 0.93;
+  }
+  38% {
+    opacity: 0.5;
+  }
+  39% {
+    opacity: 0.96;
+  }
+  42% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 0.97;
+  }
+  46% {
+    opacity: 0.94;
+  }
+  56% {
+    opacity: 0.9;
+  }
+  58% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.99;
+  }
+  68% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  72% {
+    opacity: 0.95;
+  }
+  93% {
+    opacity: 0.93;
+  }
+  95% {
+    opacity: 0.95;
+  }
+  97% {
+    opacity: 0.93;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+/* Santa front card*/
+
+/*.window {
   width: 34vmin;
   height: 34vmin;
   background: #a0d5d3;
   position: relative;
 
-  /* top: 50%;
-  left: 50%; */
+ //  top: 50%;
+ // left: 50%; 
   border-radius: 50%;
   margin-top: -6vmin;
-  /* -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%); */
-  /* transform: translate(50%, 50%); */
+ // -webkit-transform: translate(-50%, -50%);
+ // -moz-transform: translate(-50%, -50%);
+ // -ms-transform: translate(-50%, -50%);
+ // -o-transform: translate(-50%, -50%); 
+ // transform: translate(50%, 50%); 
   border: 10px solid #f8e7dc;
   overflow: hidden; }
 
@@ -685,14 +1610,14 @@ main {
   src: local("Mountains of Christmas"), local("MountainsofChristmas-Regular"), url(https://fonts.gstatic.com/s/mountainsofchristmas/v8/dVGBFPwd6G44IWDbQtPewylJhLDHyIrT3I5b5eGTHmw.woff2) format("woff2"); }
 .message {
   position: relative;
-  /* left: 50%;
-  top: 50%; */
-  /* margin-top: 8vmin; */
-  /* -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%); */
+//left: 50%;
+//top: 50%;
+//margin-top: 8vmin;
+//-webkit-transform: translateX(-50%);
+//-moz-transform: translateX(-50%);
+//-ms-transform: translateX(-50%);
+//-o-transform: translateX(-50%);
+//transform: translateX(-50%);
   color: #f8e7dc;
   font-family: 'Mountains of Christmas'; }
   .message h1 {
@@ -1182,64 +2107,6 @@ main {
 
   100% {
     width: 2vmin; } }
-
+ */
 
 /* santa front card end */
-
-/* Snow fall start */
-.snow-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  pointer-events: none;
-}
-
-.snowflake {
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-@keyframes fall {
-  0% {
-      opacity: 0;
-      transform: translateY(0);
-  }
-  10% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0.5;
-      transform: translateY(100vh);
-  }
-}
-
-@keyframes diagonal-fall {
-  0% {
-      opacity: 0;
-      transform: translate(0, 0);
-  }
-  10% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0.25;
-      transform: translate(10vw, 100vh);
-  }
-}
-/* Snow fall end */
-.footer{
-  position: fixed;
-  left:0;
-  bottom:0;
-  width: auto;
-
-  color: #ffffff98;
-  padding: 1vmin;
-}
