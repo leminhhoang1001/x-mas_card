@@ -1,4 +1,4 @@
-let snowflakes_count = 500;
+let snowflakes_count = 200;
 
 // let base_css = ``; // Put your custom base css here
 
