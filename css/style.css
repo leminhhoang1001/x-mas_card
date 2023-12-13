@@ -1334,14 +1334,14 @@ main {
 /* christmas message start*/
 .christmas-message{
   position: relative;
-  top: 33%;
-  width: 80%;
+  top: 34%;
+  width: 86%;
   height: 20%;
   overflow: hidden;
 }
 .message-content{
   color: #ffffff;
-  font: normal 5vmin 'Dancing Script';
+  font: normal 4.6vmin 'Dancing Script';
   font-weight: 600;
   letter-spacing: 0.1vmin;
   word-wrap: break-word;
