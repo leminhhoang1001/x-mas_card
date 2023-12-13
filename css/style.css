@@ -50,7 +50,11 @@ body {
 .card {
   width: 90vmin;
   height: 70vmin;
-  position: relative;  
+  position: absolute;  
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
 }
 
 .card-back {
@@ -1335,14 +1339,14 @@ main {
 /* christmas message start*/
 .christmas-message{
   position: relative;
-  top: 34%;
+  top: 32%;
   width: 86%;
   height: 20%;
   overflow: hidden;
 }
 .message-content{
   color: #ffffff;
-  font: normal 4.8vmin 'Caveat';
+  font: normal 5vmin 'Caveat';
   font-weight: 700;
   letter-spacing: 0.1vmin;
   word-wrap: break-word;
