@@ -700,6 +700,7 @@ main {
 }
 .ornaments .ornament-box:nth-child(1) {
   left: 18%;
+  z-index: 30;
   /* content: "";
   position: absolute; */
 }
