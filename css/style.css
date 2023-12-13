@@ -717,6 +717,8 @@ main {
   background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
   animation: fall 3s ease-in-out infinite;
   opacity: 0.99;
+  transform: translate3d(0,0,1vmin);
+  -webkit-transform: translate3d(0,0,1vmin);
 }
 .ornaments .ornament-box:nth-child(1) > .ornament > .face > .eyes {
   left: 0.8vmin;
@@ -770,6 +772,8 @@ main {
   box-shadow: 0vmin 0.5vmin 0.2vmin rgba(0, 0, 0, 0.2),
               0vmin 0vmin 3vmin 1vmin #e8f858a6;
   background-image: radial-gradient(100% 115% at 25% 25%, #fff, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffea80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ffe666 98%);
+  transform: translate3d(0,0,1vmin);
+  -webkit-transform: translate3d(0,0,1vmin);
 }
 .ornaments .ornament-box:nth-child(2) > .ornament > .face > .eyes {
   left: -1vmin;
