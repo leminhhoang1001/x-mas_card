@@ -694,14 +694,14 @@ main {
 }
 .ornaments .ornament-box {
   transform-origin: top;
-  top: -3vmin;
+  top: -2vmin;
   content: "";
   position: absolute;
 }
 .ornaments .ornament-box:nth-child(1) {
   left: 18%;
-  content: "";
-  position: absolute;
+  /* content: "";
+  position: absolute; */
 }
 .ornaments .ornament-box:nth-child(1) > .ornament {
   z-index: 20;
@@ -754,8 +754,8 @@ main {
 .ornaments .ornament-box:nth-child(2) {
   animation: pendulum 3s ease-in-out infinite;
   left: 60%;
-  content: "";
-  position: absolute;
+  /* content: "";
+  position: absolute; */
 }
 .ornaments .ornament-box:nth-child(2) > .ornament {
   z-index: 20;
