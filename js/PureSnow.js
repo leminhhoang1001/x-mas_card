@@ -97,8 +97,10 @@ function spawnSnowCSS(snow_density = 200){
 
 // Load the rules and execute after the DOM loads
 window.onload = function() {
-    spawnSnowCSS(snowflakes_count);
-    spawn_snow(snowflakes_count);
+    setTimeout(function(){    
+        spawnSnowCSS(snowflakes_count);
+        spawn_snow(snowflakes_count);},6000)
+
 };
 
 // TODO add progress bar for slower clients
