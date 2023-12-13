@@ -464,8 +464,8 @@ main {
 /* Kissing */
 
 .container-kissing {
-  width: 46vmin;
-  height: 46vmin;
+  width: 45vmin;
+  height: 45vmin;
   transform: translate(-50%, -50%);
   top: 38%;
   left: 50%;
@@ -1331,7 +1331,24 @@ main {
   }
 }
 
-
+/* christmas message start*/
+.christmas-message{
+  position: relative;
+  top: 33%;
+  width: 80%;
+  height: 20%;
+  overflow: hidden;
+}
+.message-content{
+  color: #ffffff;
+  font: normal 5vmin 'Dancing Script';
+  font-weight: 600;
+  letter-spacing: 0.1vmin;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  text-shadow: 1vmin 1vmin 0.7vmin #000000bb;
+}
+/* christmas message end */
 
 /* Santa front card*/
 
