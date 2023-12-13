@@ -22,7 +22,7 @@
   var speed = 50;
   var message = messagelist[random];
   const muteSound = new Howl({
-    src: ['./christmas-song.m4a', './christmas-song.m4a', './christmas-song.m4a'],
+    src: ['./audio/christmas-song.mp3'],
     // mute: false,
     // autoplay:true,
     loop: true,
