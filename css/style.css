@@ -464,10 +464,10 @@ main {
 /* Kissing */
 
 .container-kissing {
-  width: 45vmin;
-  height: 45vmin;
+  width: 46vmin;
+  height: 46vmin;
   transform: translate(-50%, -50%);
-  top: 40%;
+  top: 38%;
   left: 50%;
   background-color: #faf744e3;
   box-shadow: 0 0 4vmin 3vmin #fffc3e65;
@@ -821,6 +821,7 @@ main {
   left: -0.8vmin;
   content: "";
   position: absolute;
+  z-index: 2;
 }
 .ornaments .face {
   width: 100%;
