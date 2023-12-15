@@ -688,7 +688,7 @@ main {
   width: 100%;
   height: 40%;
   top: 40%;
-  z-index: 30;
+  /*z-index: 30;*/
   content: "";
   position: absolute;
 }
@@ -697,7 +697,7 @@ main {
   top: -2vmin;
   content: "";
   position: absolute;
-  z-index: 30;
+  /*z-index: 30;*/
 }
 .ornaments .ornament-box:nth-child(1) {
   left: 18%;
