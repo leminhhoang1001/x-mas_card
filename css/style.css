@@ -753,8 +753,8 @@ main {
 }
 .ornaments .ornament-box:nth-child(1) > .string {
   animation: string-stretch 3s ease-in-out infinite;
-  /*transform: translate3d(0,0,1vmin);
-  -webkit-transform: translate3d(0,0,1vmin);*/
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
   z-index: 29 !important;
   opacity: 0.99 !important;
 }
