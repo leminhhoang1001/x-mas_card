@@ -706,7 +706,7 @@ main {
 }
 .ornaments .ornament-box:nth-child(1) > .ornament {
   z-index: 30 !important;
-  opacity: 0.99;
+  opacity: 0.99 !important;
   position: relative;
   width: 10vmin;
   height: 10vmin;
@@ -827,7 +827,7 @@ main {
   left: 4.8vmin;
   transform-origin: top;
   z-index: 10;
-  opacity: 0.99;
+  opacity: 0.99 !important;
 }
 .ornaments .string:after {
   width: 1.7vmin;
