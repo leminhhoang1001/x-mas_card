@@ -705,7 +705,7 @@ main {
   position: absolute; */
 }
 .ornaments .ornament-box:nth-child(1) > .ornament {
-  z-index: 30 ;
+  z-index: 30 !important;
   opacity: 0.99 !important;
   position: relative;
   width: 10vmin;
@@ -755,10 +755,8 @@ main {
   animation: string-stretch 3s ease-in-out infinite;
   transform: translate3d(0,0,1vmin);
   -webkit-transform: translate3d(0,0,1vmin);
-  z-index: 10 !important;
+  z-index: 10 ;
   opacity: 0.99;
-  content: "";
-  position: absolute;
 }
 .ornaments .ornament-box:nth-child(2) {
   animation: pendulum 3s ease-in-out infinite;
