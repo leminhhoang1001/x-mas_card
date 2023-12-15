@@ -688,7 +688,7 @@ main {
   width: 100%;
   height: 40%;
   top: 40%;
-  z-index: 2;
+  z-index: 30;
   content: "";
   position: absolute;
 }
@@ -706,7 +706,7 @@ main {
 }
 .ornaments .ornament-box:nth-child(1) > .ornament {
   ::after{
-    z-index: 30 !important;
+    z-index: 15 !important;
     opacity: 0.99 !important;
   }
   position: relative;
@@ -719,8 +719,6 @@ main {
   background-color: #cd4626;
   background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
   animation: fall 3s ease-in-out infinite;
-  transform: translate3d(0,0,2vmin) ;
-  -webkit-transform: translate3d(0,0,2vmin) ;
 }
 .ornaments .ornament-box:nth-child(1) > .ornament > .face > .eyes {
   left: 0.8vmin;
@@ -757,7 +755,7 @@ main {
   animation: string-stretch 3s ease-in-out infinite;
   transform: translate3d(0,0,0) !important;
   -webkit-transform: translate3d(0,0,0)!important;
-  z-index: 29 !important;
+  z-index: 10 !important;
   opacity: 0.99 !important;
 }
 .ornaments .ornament-box:nth-child(2) {
