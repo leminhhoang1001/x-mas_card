@@ -755,7 +755,7 @@ main {
   animation: string-stretch 3s ease-in-out infinite;
   transform: translate3d(0,0,1vmin) !important;
   -webkit-transform: translate3d(0,0,1vmin) !important;
-  z-index: 10 !important;
+  z-index: 29 !important;
   opacity: 0.99 !important;
 }
 .ornaments .ornament-box:nth-child(2) {
