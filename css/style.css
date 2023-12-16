@@ -705,7 +705,7 @@ main {
   position: absolute; */
 }
 .ornaments .ornament-box:nth-child(1) > .ornament {
-  z-index: 30 !important;
+  z-index: 30;
   opacity: 0.99;
   position: relative;
   width: 10vmin;
