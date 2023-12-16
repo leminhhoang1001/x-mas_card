@@ -1206,18 +1206,18 @@ main {
 @keyframes fall {
   0% {
     transform: translateY(1.5vmin);
-    transform: translateZ(1px);
-    -webkit-transform: translateZ(1px);
+    /*transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);*/
   }
   50% {
     transform: translateY(0vmin);
-    transform: translateZ(1px);
-    -webkit-transform: translateZ(1px);
+    /*transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);*/
   }
   100% {
     transform: translateY(1.5vmin);
-    transform: translateZ(1px);
-    -webkit-transform: translateZ(1px);
+    /*transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);*/
   }
 }
 @keyframes blush {
