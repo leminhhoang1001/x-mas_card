@@ -824,7 +824,7 @@ main {
   transform: perspective(1vmin) rotateX(5deg);
   left: 4.8vmin;
   transform-origin: top;
-  z-index: 10;
+  z-index: -6;
   opacity: 0.99;
 }
 .ornaments .string:after {
