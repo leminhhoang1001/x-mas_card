@@ -716,7 +716,7 @@ main {
   border: 0.1vmin solid #ff5500;
   background-color: #cd4626;
   background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
-  animation: fall 3s ease-in-out infinite;
+  animation: fall 3s ease-in-out infinite !important;
   transform: translateZ(1vmin) !important;
   -webkit-transform: translateZ(1vmin) !important;
 }
