@@ -753,8 +753,8 @@ main {
 }
 .ornaments .ornament-box:nth-child(1) > .string {
   animation: string-stretch 3s ease-in-out infinite;
-  transform: translate3d(0,0,-0.1vmin);
-  -webkit-transform: translate3d(0,0,-0.1vmin);
+  transform: translate3d(0,0,-1px);
+  -webkit-transform: translate3d(0,0,-1px);
 }
 .ornaments .ornament-box:nth-child(2) {
   animation: pendulum 3s ease-in-out infinite;
