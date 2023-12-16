@@ -717,8 +717,8 @@ main {
   background-color: #cd4626;
   background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
   animation: fall 3s ease-in-out infinite;
-  transform: translateZ(2vmin);
-  -webkit-transform: translateZ(2vmin);
+  transform: translateZ(1px);
+  -webkit-transform: translateZ(1px);
 }
 .ornaments .ornament-box:nth-child(1) > .ornament > .face > .eyes {
   left: 0.8vmin;
@@ -1206,18 +1206,18 @@ main {
 @keyframes fall {
   0% {
     transform: translateY(1.5vmin);
-    transform: translateZ(2vmin);
-    -webkit-transform: translateZ(2vmin);
+    transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);
   }
   50% {
     transform: translateY(0vmin);
-    transform: translateZ(2vmin);
-    -webkit-transform: translateZ(2vmin);
+    transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);
   }
   100% {
     transform: translateY(1.5vmin);
-    transform: translateZ(2vmin);
-    -webkit-transform: translateZ(2vmin);
+    transform: translateZ(1px);
+    -webkit-transform: translateZ(1px);
   }
 }
 @keyframes blush {
