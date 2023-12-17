@@ -891,9 +891,10 @@ main {
 }
 
 .ornaments .ornament-box:nth-child(1)>.ornament {
-    z-index: 30 !important;
+    z-index: 30;
     opacity: 0.99;
-    position: relative;
+    position: absolute;
+    top: 5vmin;
     width: 10vmin;
     height: 10vmin;
     box-shadow: 0vmin 0.5vmin 0.5vmin 0.2vmin rgba(0, 0, 0, 0.438), 0vmin 0vmin 3vmin 1vmin #fdba6ec9;
