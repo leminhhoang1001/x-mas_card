@@ -948,6 +948,7 @@ main {
     -webkit-transform: translateZ(-10px);
     z-index: -6 !important;
     opacity: 0.99 !important;
+    overflow: visible;
 }
 
 .ornaments .ornament-box:nth-child(2) {
