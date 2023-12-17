@@ -944,11 +944,9 @@ main {
 
 .ornaments .ornament-box:nth-child(1)>.string {
     animation: string-stretch 3s ease-in-out infinite;
-    transform: translateZ(-10px);
-    -webkit-transform: translateZ(-10px);
-    z-index: -6 !important;
-    opacity: 0.99 !important;
-    overflow: visible;
+    /*transform: translateZ(-10px);
+    -webkit-transform: translateZ(-10px);*/
+    overflow: visible !important;
 }
 
 .ornaments .ornament-box:nth-child(2) {
