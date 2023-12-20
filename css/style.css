@@ -944,6 +944,8 @@ main {
 
 .ornaments .ornament-box:nth-child(1)>.string-animate {
     animation: string-stretch 3s ease-in-out infinite;
+    z-index: 0;
+    opacity: 0.99
 }
 
 .ornaments .ornament-box:nth-child(2) {
