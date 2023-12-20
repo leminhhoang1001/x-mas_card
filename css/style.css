@@ -942,7 +942,7 @@ main {
     position: absolute;
 }
 
-.ornaments .ornament-box:nth-child(1)>.string {
+.ornaments .ornament-box:nth-child(1)>.string-animate {
     animation: string-stretch 3s ease-in-out infinite;
 }
 
