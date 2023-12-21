@@ -885,10 +885,9 @@ main {
 }
 
 .ornaments .ornament-box:nth-child(1) {
-    animation: pendulum-2 3s ease-in-out infinite;
     left: 18%;
-    /*content: "";
-    position: absolute;*/
+    /* content: "";
+  position: absolute; */
 }
 
 .ornaments .ornament-box:nth-child(1)>.ornament {
@@ -902,6 +901,7 @@ main {
     border: 0.1vmin solid #ff5500;
     background-color: #cd4626;
     background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
+    animation: fall 3s ease-in-out infinite;
     transform: translateZ(1px);
     -webkit-transform: translateZ(1px);
 }
@@ -942,6 +942,12 @@ main {
     position: absolute;
 }
 
+.ornaments .ornament-box:nth-child(1)>.string-animate {
+    animation: string-stretch 3s ease-in-out infinite;
+    z-index: 0;
+    opacity: 0.99
+}
+
 .ornaments .ornament-box:nth-child(2) {
     animation: pendulum 3s ease-in-out infinite;
     left: 60%;
@@ -950,7 +956,7 @@ main {
 }
 
 .ornaments .ornament-box:nth-child(2)>.ornament {
-    z-index: 30;
+    z-index: 20;
     opacity: 0.99;
     position: relative;
     width: 10vmin;
@@ -1381,18 +1387,6 @@ main {
     }
     100% {
         transform: rotate(20deg);
-    }
-}
-
-@keyframes pendulum-2 {
-    0% {
-        transform: rotate(-20deg);
-    }
-    50% {
-        transform: rotate(20deg);
-    }
-    100% {
-        transform: rotate(-20deg);
     }
 }
 
