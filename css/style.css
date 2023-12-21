@@ -886,6 +886,7 @@ main {
 
 .ornaments .ornament-box:nth-child(1) {
     left: 18%;
+    animation: pendulum-2 3s ease-in-out infinite;
     /* content: "";
   position: absolute; */
 }
@@ -1387,6 +1388,18 @@ main {
     }
     100% {
         transform: rotate(20deg);
+    }
+}
+
+@keyframes pendulum-2 {
+    0% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(-20deg);
     }
 }
 
