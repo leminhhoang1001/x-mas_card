@@ -887,8 +887,8 @@ main {
 .ornaments .ornament-box:nth-child(1) {
     animation: pendulum-2 3s ease-in-out infinite;
     left: 18%;
-    content: "";
-    position: absolute;
+    /*content: "";
+    position: absolute;*/
 }
 
 .ornaments .ornament-box:nth-child(1)>.ornament {
