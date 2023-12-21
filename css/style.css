@@ -902,8 +902,8 @@ main {
     border: 0.1vmin solid #ff5500;
     background-color: #cd4626;
     background-image: radial-gradient(100% 100% at 25% 25%, #f1c0b4, transparent 33%), radial-gradient(15% 15% at 75% 75%, #ffaa80, transparent), radial-gradient(100% 100% at 50% 25%, transparent, #ff9966 98%);
-    transform: translateZ(1px);
-    -webkit-transform: translateZ(1px);
+    transform: translateZ(1vmin);
+    -webkit-transform: translateZ(1vmin);
 }
 
 .ornaments .ornament-box:nth-child(1)>.ornament>.face>.eyes {
