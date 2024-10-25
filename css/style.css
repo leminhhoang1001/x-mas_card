@@ -136,6 +136,15 @@ body {
     padding: 0.5vmin 1.5vmin;
 }
 
+.n4me {
+    font-family: "Oooh Baby", cursive;
+    font-weight: 400;
+    font-size: 5vmin;
+    font-style: normal;
+    margin-top: 1vmin;
+    padding: 0 1vmin;
+}
+
 .greeting-title {
     flex: 1 1 0%;
     width: 100%;
@@ -160,6 +169,7 @@ body {
     position: relative;
     font: 1em/1.5 sans-serif;
     height: auto;
+    padding: 2vmin 0;
 }
 
 main {
@@ -558,7 +568,7 @@ main {
         right: 2.5vmin;
         background: var(--red4);
         background: url("./card-bg-01.png") no-repeat 50% 50% / cover;
-        border-radius: 10px;
+        border-radius: 5%;
         /* background: transparent url(https://img.freepik.com/free-photo/old-paper-texture-background_118047-1365.jpg?size=626&ext=jpg) 50% 50% no-repeat;
     background-size: cover; */
     }
