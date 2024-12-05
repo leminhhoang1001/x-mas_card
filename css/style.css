@@ -115,8 +115,8 @@ body {
 .greeting-top,
 .greeting-from-to {
     color: #002705;
-    padding: 1.5vmin;
-    font: normal 3.3vmin menlo, monaco, monospace;
+    padding: 1vmin;
+    font: normal 3vmin menlo, monaco, monospace;
     position: relative;
 }
 
@@ -139,7 +139,7 @@ body {
 .n4me {
     font-family: "Oooh Baby", cursive;
     font-weight: 400;
-    font-size: 4.5vmin;
+    font-size: 4vmin;
     font-style: normal;
     margin-top: 1vmin;
     padding: 0 1vmin;
@@ -169,7 +169,7 @@ body {
     position: relative;
     font: 1em/1.5 sans-serif;
     height: auto;
-    padding: 2vmin 0;
+    padding: 1vmin 0;
 }
 
 main {
