@@ -16,14 +16,11 @@ const messagelist = [
     "Sending you the very warm wish of Christmas love!",
     "This Christmas, let it snow and let your light glow."
 ];
-const random = Math.floor(Math.random() * messagelist.length);
-var i = 0;
-var speed = 50;
-var message = messagelist[random];
+
 const muteSound = new Howl({
     src: ['./audio/christmas-song.mp3'],
     // mute: false,
-    // autoplay:true,
+    // autoplay: true,
     loop: true,
     html5: true,
     volume: 1
@@ -48,9 +45,9 @@ card.addEventListener('click', playchristmas, { once: true });
 function playchristmas() {
     muteSound.play();
 }
-// // update date of card
-// var date = moment();
-// document.getElementById("date").innerHTML = date.format('DD.MM.YYYY');
+// update date of card
+var date = moment();
+document.getElementById("date").innerHTML = date.format('DD.MM.YYYY');
 
 
 // mute/unmute
@@ -73,8 +70,12 @@ button.addEventListener("click", () => {
 
 card.addEventListener('click', function() {
     setTimeout(function() {
+        const random = Math.floor(Math.random() * messagelist.length);
+        var i = 0;
+        var speed = 50;
+        var message = messagelist[random];
         var typed = new Typed('.message-content', {
-            strings: [messagelist[random]],
+            strings: [message],
             typeSpeed: 40,
             showCursor: false
         });
