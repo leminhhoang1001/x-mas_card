@@ -6,8 +6,8 @@
     <title>Merry Christmas!!!</title>
     <link rel="shortcut icon" href="./img/x-mas.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/moment-with-locales.js"></script>
-    <script src="./js/moment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.13/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.13/plugin/duration.js"></script>
     <script src="./js/PureSnow.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -23,7 +23,9 @@
         <div class="card-face card-front">
             <div class="card-content">
                 <!-- <img src="https://66.media.tumblr.com/e18c63bdefd951eb243e67d94dab2f7e/tumblr_phsco7aBJG1vq64mxo4_r1_1280.jpg" /> -->
-                <div class="greeting-top" id="date"></div>
+                <div class="greeting-top">
+                    <p id="date">Loading...!</p>
+                </div>
                 <!-- <div class="greeting-title">Congratulation!</div> -->
                 <div class="greeting-content">
                     <main>
@@ -88,16 +90,12 @@
                 </div>
                 <div class="greeting-from-to">
                     <div class="from">
-                        <p>
-                            From:
-                            <p class="n4me"><strong>Me ,</strong></p>
-                        </p>
+                        <p>From:</p>
+                        <p class="n4me">Me ,</p>
                     </div>
                     <div class="to">
-                        <p>
-                            To:
-                            <p class="n4me"><strong>You ,</strong></p>
-                        </p>
+                        <p>To:</p>
+                        <p class="n4me">You ,</p>
                     </div>
                 </div>
                 <span class="tap-hint" id="tap-hint"><p>Click Me!</p></span>

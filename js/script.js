@@ -45,9 +45,42 @@ card.addEventListener('click', playchristmas, { once: true });
 function playchristmas() {
     muteSound.play();
 }
+
+// Kích hoạt plugin duration của dayjs
+dayjs.extend(dayjs_plugin_duration);
+
 // update date of card
-var date = moment();
-document.getElementById("date").innerHTML = date.format('DD.MM.YYYY');
+function getChristmasCountdown() {
+    const now = dayjs().startOf('day'); // thời gian hiện tại
+    const currentYear = now.year(); //lấy năm hiện tại
+
+    //ngày giáng sinh
+    let christmasThisYear = dayjs('${currentyear}-12-25');
+    // Nếu đã qua Giáng sinh, tính cho năm tiếp theo
+    const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-25`) : christmasThisYear;
+
+    // Nếu hiện tại là tháng 12, hiển thị đếm ngược
+    if (now.month() === 11) { // Tháng 12 (tháng 0-based index)
+        const diff = targetDate.diff(now); // Khoảng cách thời gian
+        const countdown = dayjs.duration(diff);
+        const inputcontent1 = `<p class="daysss"> Days</p>`;
+        const inputcontent2 = `<p class="dayleft"> to go!</p>`;
+        return `${countdown.days()} ${inputcontent1} ${inputcontent2}`;
+    }
+    // Nếu không phải tháng 12, hiển thị ngày bình thường
+    return `${now.format('DD.MM.YYYY')}`;
+}
+
+function updateCountdown() {
+    const countdownElement = document.getElementById('date');
+    countdownElement.innerHTML = getChristmasCountdown();
+}
+
+// Cập nhật đếm ngược mỗi giây
+setInterval(updateCountdown, 1000);
+
+// Hiển thị ngay lập tức khi load trang
+updateCountdown();
 
 
 // mute/unmute
