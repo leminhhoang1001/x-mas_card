@@ -48,6 +48,8 @@ function playchristmas() {
 
 // Kích hoạt plugin duration của dayjs
 dayjs.extend(dayjs_plugin_duration);
+dayjs.extend(dayjs_plugin_duration);
+dayjs.extend(dayjs_plugin_utc);
 
 // update date of card
 function getChristmasCountdown() {
@@ -55,9 +57,9 @@ function getChristmasCountdown() {
     const currentYear = now.year(); //lấy năm hiện tại
 
     //ngày giáng sinh
-    let christmasThisYear = dayjs('${currentYear}-12-25');
+    let christmasThisYear = dayjs(`${currentYear}-12-25T00:00:00`);
     // Nếu đã qua Giáng sinh, tính cho năm tiếp theo
-    const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-25`) : christmasThisYear;
+    const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-25T00:00:00`) : christmasThisYear;
 
     // Nếu hiện tại là tháng 12, hiển thị đếm ngược
     if (now.month() === 11) { // Tháng 12 (tháng 0-based index)
