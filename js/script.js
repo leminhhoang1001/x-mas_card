@@ -55,7 +55,7 @@ function getChristmasCountdown() {
     const currentYear = now.year(); //lấy năm hiện tại
 
     //ngày giáng sinh
-    let christmasThisYear = dayjs('${currentyear}-12-25');
+    let christmasThisYear = dayjs('${currentYear}-12-25');
     // Nếu đã qua Giáng sinh, tính cho năm tiếp theo
     const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-25`) : christmasThisYear;
 
