@@ -5,17 +5,19 @@ let id;
 const button = document.getElementById('muteaudio');
 const musicOn = '<i class="fas fa-volume-high"></i>';
 const musicOff = '<i class="fas fa-volume-xmark"></i>';
-const messagelist = [
-    "Wishing you a season that's merry and bright!",
-    "For you at Christmas time: A wish for happiness, warmth, and love.",
-    "May this season be full of light and laughter for you and your family.",
-    "Every Christmas is merrier because you're a part of it, my friend.",
-    "Peace, good will, and happiness for you this Christmas and every other!",
-    "I hope you have a cozy Christmas that chases the chill of winter away.",
-    "May this holy season be full of true miracles and love for you, always.",
-    "Sending you the very warm wish of Christmas love!",
-    "This Christmas, let it snow and let your light glow."
-];
+let messagelist = [];
+let lastIndex = -1; // Lưu chỉ mục tin nhắn trước đó
+//= [
+//     "Wishing you a season that's merry and bright!",
+//     "For you at Christmas time: A wish for happiness, warmth, and love.",
+//     "May this season be full of light and laughter for you and your family.",
+//     "Every Christmas is merrier because you're a part of it, my friend.",
+//     "Peace, good will, and happiness for you this Christmas and every other!",
+//     "I hope you have a cozy Christmas that chases the chill of winter away.",
+//     "May this holy season be full of true miracles and love for you, always.",
+//     "Sending you the very warm wish of Christmas love!",
+//     "This Christmas, let it snow and let your light glow."
+// ];
 
 const muteSound = new Howl({
     src: ['./audio/christmas-song.mp3'],
@@ -27,6 +29,21 @@ const muteSound = new Howl({
 });
 muteSound.autoUnlock = false;
 
+// Hàm đọc file .txt và chuyển nội dung thành mảng
+// Hàm tải danh sách câu chúc từ file JSON
+async function loadMessages() {
+    try {
+        const response = await fetch('js/messages.json'); // Đường dẫn tới file JSON
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        messagelist = await response.json(); // Parse JSON thành mảng
+        console.log('Danh sách câu chúc đã tải thành công:', messagelist);
+    } catch (error) {
+        console.error('Lỗi khi tải danh sách câu chúc:', error.message);
+    }
+}
+
 // Hàm lấy số ngẫu nhiên sử dụng crypto
 function getSecureRandomIndex(max) {
     const array = new Uint32Array(1);
@@ -34,8 +51,7 @@ function getSecureRandomIndex(max) {
     return array[0] % max; // Lấy phần dư để đảm bảo trong khoảng 0 đến max - 1
 }
 
-let lastIndex = -1; // Lưu chỉ mục tin nhắn trước đó
-
+// Sự kiện lật thiệp
 card.addEventListener('click', function(e) {
     e.preventDefault();
     $('html, body').css({ overflow: 'hidden' }); // Vô hiệu hóa cuộn khi lật thiệp
@@ -43,16 +59,19 @@ card.addEventListener('click', function(e) {
 
     // Kiểm tra nếu đang ở mặt sau (lớp "flipped" được thêm vào)
     if (card.classList.contains('flipped')) {
-        // Đợi animation hoàn tất
         setTimeout(() => {
-            // Chọn câu chúc ngẫu nhiên mới
+            if (messagelist.length === 0) {
+                console.error('Danh sách câu chúc trống hoặc chưa được tải.');
+                return;
+            }
+
+            // Chọn câu chúc ngẫu nhiên
             let random;
             do {
                 random = getSecureRandomIndex(messagelist.length);
             } while (random === lastIndex); // Đảm bảo không lặp lại liên tiếp
 
-            lastIndex = random; // Cập nhật câu chúc đã chọn
-
+            lastIndex = random; // Cập nhật chỉ mục mới
             const message = messagelist[random];
 
             // Xóa nội dung cũ trước khi hiển thị câu chúc mới
@@ -61,21 +80,19 @@ card.addEventListener('click', function(e) {
                 messageContainer.innerHTML = ''; // Xóa nội dung cũ
             }
 
-            // Hiển thị câu chúc mới với hiệu ứng gõ chữ
+            // Hiển thị câu chúc mới
             new Typed('.message-content', {
                 strings: [message],
                 typeSpeed: 40,
                 showCursor: false
             });
-        }, 600); // Thời gian chờ để khớp với hiệu ứng lật (CSS transition)
-    } // if (tapHint) {
-    //   tapHint.remove()
-    // }
-    // else if(!tapHint){
-    //   tapHint.add()
-    // }
-
+        }, 600); // Thời gian trễ để khớp với hiệu ứng lật
+    }
 });
+
+// Tải danh sách câu chúc khi trang được tải
+loadMessages();
+
 // play music once tim flip card
 card.addEventListener('click', playchristmas, { once: true });
 
