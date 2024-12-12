@@ -26,12 +26,49 @@ const muteSound = new Howl({
     volume: 1
 });
 muteSound.autoUnlock = false;
+
+// Hàm lấy số ngẫu nhiên sử dụng crypto
+function getSecureRandomIndex(max) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] % max; // Lấy phần dư để đảm bảo trong khoảng 0 đến max - 1
+}
+
+let lastIndex = -1; // Lưu chỉ mục tin nhắn trước đó
+
 card.addEventListener('click', function(e) {
     e.preventDefault();
-    $('html, body').css({ overflow: 'hidden' });
-    card.classList.toggle('flipped');
+    $('html, body').css({ overflow: 'hidden' }); // Vô hiệu hóa cuộn khi lật thiệp
+    card.classList.toggle('flipped'); // Lật thiệp
 
-    // if (tapHint) {
+    // Kiểm tra nếu đang ở mặt sau (lớp "flipped" được thêm vào)
+    if (card.classList.contains('flipped')) {
+        // Đợi animation hoàn tất
+        setTimeout(() => {
+            // Chọn câu chúc ngẫu nhiên mới
+            let random;
+            do {
+                random = getSecureRandomIndex(messagelist.length);
+            } while (random === lastIndex); // Đảm bảo không lặp lại liên tiếp
+
+            lastIndex = random; // Cập nhật câu chúc đã chọn
+
+            const message = messagelist[random];
+
+            // Xóa nội dung cũ trước khi hiển thị câu chúc mới
+            const messageContainer = document.querySelector('.message-content');
+            if (messageContainer) {
+                messageContainer.innerHTML = ''; // Xóa nội dung cũ
+            }
+
+            // Hiển thị câu chúc mới với hiệu ứng gõ chữ
+            new Typed('.message-content', {
+                strings: [message],
+                typeSpeed: 40,
+                showCursor: false
+            });
+        }, 600); // Thời gian chờ để khớp với hiệu ứng lật (CSS transition)
+    } // if (tapHint) {
     //   tapHint.remove()
     // }
     // else if(!tapHint){
@@ -101,21 +138,30 @@ button.addEventListener("click", () => {
 });
 
 
-// Random TypeWriter Message
+// // Random TypeWriter Message
 
-card.addEventListener('click', function() {
-    setTimeout(function() {
-        const random = Math.floor(Math.random() * messagelist.length);
-        var i = 0;
-        var speed = 50;
-        var message = messagelist[random];
-        var typed = new Typed('.message-content', {
-            strings: [message],
-            typeSpeed: 40,
-            showCursor: false
-        });
-    }, 2000);
-}, { once: true });
+// card.addEventListener('click', function() {
+//     setTimeout(function() {
+//         let random;
+//         do {
+//             random = getSecureRandomIndex(messagelist.length);
+//         } while (random === lastIndex); // Đảm bảo không trùng với lần trước
+
+//         lastIndex = random; // Cập nhật chỉ mục mới        
+//         var speed = 50;
+//         var message = messagelist[random];
+//         // Làm sạch nội dung cũ (nếu có)
+//         const messageContainer = document.querySelector('.message-content');
+//         if (messageContainer) {
+//             messageContainer.innerHTML = ''; // Xóa nội dung cũ
+//         }
+//         var typed = new Typed('.message-content', {
+//             strings: [message],
+//             typeSpeed: 40,
+//             showCursor: false
+//         });
+//     }, 2000);
+// });
 
 // function typeWriter() {
 //     var typed = new Typed('.message-content', {
