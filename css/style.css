@@ -124,6 +124,13 @@ body {
     justify-content: space-around;
 }
 
+#date.green {
+    color: #002705;
+    /* Màu xanh */
+    font-size: 4.8vmin;
+    font-weight: 500;
+}
+
 .daysss {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;

@@ -111,25 +111,36 @@ function getChristmasCountdown() {
     const currentYear = now.year(); //lấy năm hiện tại
 
     //ngày giáng sinh
-    let christmasThisYear = dayjs(`${currentYear}-12-25T00:00:00`);
+    const christmasThisYear = dayjs(`${currentYear}-12-21T00:00:00`);
     // Nếu đã qua Giáng sinh, tính cho năm tiếp theo
-    const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-25T00:00:00`) : christmasThisYear;
+    // const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-21T00:00:00`) : christmasThisYear;
 
     // Nếu hiện tại là tháng 12, hiển thị đếm ngược
     if (now.month() === 11) { // Tháng 12 (tháng 0-based index)
-        const diff = targetDate.diff(now); // Khoảng cách thời gian
-        const countdown = dayjs.duration(diff);
-        const inputcontent1 = `<p class="daysss"> Days</p>`;
-        const inputcontent2 = `<p class="dayleft"> to go!</p>`;
-        return `${countdown.days()} ${inputcontent1} ${inputcontent2}`;
+        if (now.isBefore(christmasThisYear)) {
+            const diff = christmasThisYear.diff(now, 'days'); // Số ngày còn lại
+            // const countdown = dayjs.duration(diff);
+            const inputcontent1 = `<p class="daysss"> Days</p>`;
+            const inputcontent2 = `<p class="dayleft"> to go!</p>`;
+            // return `${countdown.days()} ${inputcontent1} ${inputcontent2}`;
+            return `${diff} ${inputcontent1} ${inputcontent2}`;
+        } else {
+            // Sau hoặc đúng ngày Giáng sinh, hiển thị ngày hiện tại    
+            return `${now.format('DD.MM.YYYY')}`;
+
+        }
     }
-    // Nếu không phải tháng 12, hiển thị ngày bình thường
-    return `${now.format('DD.MM.YYYY')}`;
 }
 
 function updateCountdown() {
     const countdownElement = document.getElementById('date');
-    countdownElement.innerHTML = getChristmasCountdown();
+    const countdownText = getChristmasCountdown(); // Lấy dữ liệu từ hàm đếm ngược
+    countdownElement.innerHTML = countdownText;
+    if (countdownText.includes('.')) { // Kiểm tra nếu kết quả có định dạng ngày tháng năm (VD: DD-MM-YYYY)
+        countdownElement.classList.add('green');
+    } else {
+        countdownElement.classList.remove('green'); // Nếu không, giữ nguyên màu đỏ
+    }
 }
 
 // Cập nhật đếm ngược mỗi giây
