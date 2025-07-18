@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Tích Rủi Ro: JuCoin & Sloth Trust</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Analyst's Warning -->
+    <!-- Application Structure Plan: Cấu trúc ứng dụng được thiết kế theo một luồng tường thuật, dẫn dắt người dùng từ những lời quảng cáo ban đầu đến việc phân tích sâu các dấu hiệu đáng ngờ và cuối cùng là kết luận cảnh báo. Cách tiếp cận này giúp người dùng nhận thức rủi ro một cách tuần tự và thuyết phục. Các phần chính bao gồm: Giới thiệu tổng quan, Phân tích JuCoin (so sánh lời quảng cáo và thực tế), Phân tích Sloth Trust (với biểu đồ tương tác để vạch trần lợi nhuận phi thực tế và sơ đồ mô hình đa cấp), Bảng kiểm tra dấu hiệu lừa đảo, và Kết luận. Cấu trúc này tối ưu hóa việc truyền tải thông điệp cảnh báo cốt lõi của báo cáo. -->
+    <!-- Visualization & Content Choices: 
+        1. Lợi nhuận của Sloth Trust -> Mục tiêu: So sánh & Chứng minh sự phi thực tế -> Biểu đồ đường (Line Chart) của Chart.js với thanh trượt tương tác. Lý do: Trực quan hóa tốc độ tăng trưởng phi lý của "0.5% mỗi ngày" so với một mức lợi nhuận thực tế, giúp người dùng "cảm nhận" được sự nguy hiểm thay vì chỉ đọc con số. Tương tác: Thanh trượt thay đổi vốn đầu tư để thấy sự thay đổi trên biểu đồ.
+        2. Mô hình đa cấp của Sloth Trust -> Mục tiêu: Tổ chức & Vạch trần cấu trúc -> Sơ đồ hình kim tự tháp dùng HTML/CSS. Lý do: Một sơ đồ đơn giản ngay lập tức cho thấy bản chất của mô hình Ponzi, hiệu quả hơn nhiều so với việc mô tả bằng văn bản. Tương tác: Hover để làm nổi bật các tầng.
+        3. Dấu hiệu lừa đảo -> Mục tiêu: Tổng hợp & So sánh -> Bảng kiểm tra (Checklist) dùng HTML/CSS. Lý do: Một bảng kiểm tra trực quan nhanh chóng khẳng định Sloth Trust/JuCoin khớp với các đặc điểm của một dự án lừa đảo.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-red-600">Phân Tích Rủi Ro</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#overview" class="text-gray-600 hover:text-red-600">Tổng Quan</a>
+                <a href="#jucoin" class="text-gray-600 hover:text-red-600">JuCoin</a>
+                <a href="#sloth-trust" class="text-gray-600 hover:text-red-600">Sloth Trust</a>
+                <a href="#warnings" class="text-gray-600 hover:text-red-600">Dấu Hiệu Lừa Đảo</a>
+                <a href="#conclusion" class="text-gray-600 hover:text-red-600">Kết Luận</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#overview" class="block py-2 text-gray-600 hover:text-red-600">Tổng Quan</a>
+             <a href="#jucoin" class="block py-2 text-gray-600 hover:text-red-600">JuCoin</a>
+             <a href="#sloth-trust" class="block py-2 text-gray-600 hover:text-red-600">Sloth Trust</a>
+             <a href="#warnings" class="block py-2 text-gray-600 hover:text-red-600">Dấu Hiệu Lừa Đảo</a>
+             <a href="#conclusion" class="block py-2 text-gray-600 hover:text-red-600">Kết Luận</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="text-center mb-16 pt-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Phân Tích JuCoin & Sloth Trust</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Một công cụ tương tác giúp bạn tìm hiểu, phân tích và nhận diện các dấu hiệu cảnh báo tiềm ẩn từ sàn giao dịch JuCoin và chương trình đầu tư Sloth Trust.</p>
+        </section>
+
+        <section id="jucoin" class="mb-16 pt-12">
+            <div class="text-center mb-12">
+                <span class="text-red-500 font-semibold">Phân Tích Sàn Giao Dịch</span>
+                <h2 class="text-3xl font-bold mt-2">JuCoin: Giữa Lời Quảng Cáo và Thực Tế</h2>
+                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">JuCoin xây dựng hình ảnh một sàn giao dịch lâu đời và uy tín. Tuy nhiên, một phản hồi quan trọng từ người dùng đã dấy lên mối lo ngại lớn về tính minh bạch và an toàn của nền tảng này.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-xl mb-4 text-green-600">Lời Quảng Cáo (The Pitch)</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span><span><strong>Lịch sử lâu đời:</strong> Tuyên bố thành lập từ năm 2013.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span><span><strong>Thành tựu:</strong> Từng đứng đầu về khối lượng giao dịch (2017) và được miễn trừ MAS (2020).</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span><span><strong>Hệ sinh thái rộng lớn:</strong> Hợp tác với hơn 300 dự án AI, DeFi, RWA...</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span><span><strong>Hiện diện công khai:</strong> Có mặt trên Google Play và CoinMarketCap.</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 p-6 rounded-lg border border-red-200 shadow-lg">
+                    <h3 class="font-bold text-xl mb-4 text-red-700 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        Cảnh Báo Nghiêm Trọng (The Red Flag)
+                    </h3>
+                    <div class="bg-white p-4 rounded">
+                        <p class="text-gray-700 italic">"Đây là sàn giao dịch giả mạo. Vui lòng không nạp tiền vào nền tảng này, họ không cho rút tiền. Nếu bạn yêu cầu rút tiền, tài khoản của bạn sẽ bị khóa."</p>
+                        <p class="text-right font-medium text-sm mt-2 text-red-500">– Đánh giá của người dùng trên Google Play, 7/2025.</p>
+                    </div>
+                    <p class="mt-4 text-sm text-red-700"><strong>Ý nghĩa:</strong> Đây là dấu hiệu cảnh báo nguy hiểm nhất. Việc không thể rút tiền là đặc điểm chung của các sàn giao dịch lừa đảo. Mọi lời quảng cáo đều trở nên vô nghĩa nếu tài sản của người dùng bị chiếm đoạt.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sloth-trust" class="mb-16 pt-12 bg-gray-100 py-12 rounded-xl">
+            <div class="text-center mb-12 px-4">
+                <span class="text-red-500 font-semibold">Phân Tích Chương Trình Đầu Tư</span>
+                <h2 class="text-3xl font-bold mt-2">Sloth Trust: Giải Mã Các Dấu Hiệu Đáng Ngờ</h2>
+                 <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Sloth Trust hứa hẹn những khoản lợi nhuận khổng lồ thông qua "công nghệ AI". Chúng ta sẽ phân tích sâu hơn các cam kết này để xem chúng có thực tế hay không và cấu trúc đằng sau nó là gì.</p>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-2">1. Lợi Nhuận Cố Định & Phi Thực Tế</h3>
+                    <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Sloth Trust hứa hẹn "lãi kép cố định hàng ngày là 0.5%". Hãy xem con số này thực sự lớn đến mức nào qua biểu đồ tương tác dưới đây.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="chart-container">
+                            <canvas id="returnChart"></canvas>
+                        </div>
+                        <div class="mt-6">
+                            <label for="investmentSlider" class="block text-center font-medium">Vốn đầu tư ban đầu: <span id="investmentValue" class="font-bold text-blue-600">$1000</span></label>
+                            <input id="investmentSlider" type="range" min="100" max="10000" value="1000" step="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-6">2. Cơ Chế Đa Cấp (Kim Tự Tháp)</h3>
+                     <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Hệ thống thưởng 10 lớp khi giới thiệu người dùng mới là một dấu hiệu kinh điển của mô hình Ponzi (kim tự tháp). Lợi nhuận chủ yếu đến từ tiền của người tham gia sau, không phải từ hoạt động kinh doanh thực tế.</p>
+                    <div class="flex justify-center">
+                        <div class="pyramid space-y-1 w-full max-w-md text-center">
+                            <div class="p-2 bg-red-200 text-red-800 rounded-md shadow font-bold hover:scale-105 transition-transform">Bạn</div>
+                            <div class="p-2 bg-orange-200 text-orange-800 rounded-md shadow font-medium hover:scale-105 transition-transform">Lớp 1 (6%)</div>
+                            <div class="p-2 bg-yellow-200 text-yellow-800 rounded-md shadow font-medium hover:scale-105 transition-transform">Lớp 2 (4%)</div>
+                            <div class="p-2 bg-green-200 text-green-800 rounded-md shadow font-medium hover:scale-105 transition-transform">Lớp 3 (2%)</div>
+                            <div class="p-2 bg-blue-200 text-blue-800 rounded-md shadow font-medium hover:scale-105 transition-transform">Lớp 4 (1%)</div>
+                             <div class="p-2 bg-indigo-200 text-indigo-800 rounded-md shadow font-medium hover:scale-105 transition-transform">Lớp 5-10 (...)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="warnings" class="mb-16 pt-12">
+             <div class="text-center mb-12">
+                <span class="text-red-500 font-semibold">Bảng Kiểm Tra</span>
+                <h2 class="text-3xl font-bold mt-2">Đối Chiếu Với Các Dấu Hiệu Lừa Đảo Phổ Biến</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Hãy xem JuCoin và Sloth Trust khớp với bao nhiêu đặc điểm trong danh sách các dấu hiệu cảnh báo của một dự án lừa đảo.</p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-lg">
+                <ul class="space-y-4">
+                    <li class="flex items-center p-3 bg-red-50 rounded-md">
+                        <span class="text-2xl mr-4">✅</span>
+                        <div>
+                            <strong class="text-red-700">Hứa hẹn lợi nhuận cao, phi thực tế, rủi ro thấp.</strong>
+                            <p class="text-sm text-gray-600">Sloth Trust cam kết lãi suất 0.5%/ngày và lợi nhuận lên tới 250%.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-center p-3 bg-red-50 rounded-md">
+                        <span class="text-2xl mr-4">✅</span>
+                        <div>
+                            <strong class="text-red-700">Mô hình trả thưởng đa cấp (Ponzi/MLM).</strong>
+                             <p class="text-sm text-gray-600">Hệ thống thưởng 10 lớp khi giới thiệu người dùng mới.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-center p-3 bg-red-50 rounded-md">
+                        <span class="text-2xl mr-4">✅</span>
+                        <div>
+                            <strong class="text-red-700">Thiếu thông tin xác thực, minh bạch.</strong>
+                             <p class="text-sm text-gray-600">Không có thông tin độc lập về Sloth Trust. JuCoin có phản hồi tiêu cực về việc chặn rút tiền.</p>
+                        </div>
+                    </li>
+                     <li class="flex items-center p-3 bg-red-50 rounded-md">
+                        <span class="text-2xl mr-4">✅</span>
+                        <div>
+                            <strong class="text-red-700">Sử dụng thuật ngữ phức tạp, mơ hồ.</strong>
+                             <p class="text-sm text-gray-600">"Hệ thống quản lý tài chính định lượng AI", "giao thức đòn bẩy"... để tạo vẻ chuyên nghiệp.</p>
+                        </div>
+                    </li>
+                     <li class="flex items-center p-3 bg-red-50 rounded-md">
+                        <span class="text-2xl mr-4">✅</span>
+                        <div>
+                            <strong class="text-red-700">Khó khăn trong việc rút tiền.</strong>
+                             <p class="text-sm text-gray-600">Có bằng chứng từ người dùng về việc JuCoin chặn rút tiền.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="conclusion" class="pt-12 text-center bg-white p-8 rounded-xl shadow-xl">
+             <div class="text-center mb-8">
+                <span class="text-red-500 font-semibold">Hành Động Của Bạn</span>
+                <h2 class="text-3xl font-bold mt-2">Kết Luận và Khuyến Nghị Mạnh Mẽ</h2>
+            </div>
+            <div class="max-w-4xl mx-auto text-left">
+                <p class="text-lg mb-6 text-center">Dựa trên các phân tích, **JuCoin và đặc biệt là Sloth Trust có nhiều dấu hiệu cảnh báo nghiêm trọng về một kế hoạch lừa đảo.** Rủi ro mất toàn bộ tài sản là rất cao.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">🚫 KHÔNG NÊN LÀM</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex"><span class="mr-2 text-red-500 font-bold">✗</span><span>Tuyệt đối không nạp tiền vào JuCoin.</span></li>
+                            <li class="flex"><span class="mr-2 text-red-500 font-bold">✗</span><span>Không tham gia bất kỳ gói đầu tư nào của Sloth Trust.</span></li>
+                             <li class="flex"><span class="mr-2 text-red-500 font-bold">✗</span><span>Không cung cấp thông tin cá nhân hoặc ví tiền điện tử.</span></li>
+                        </ul>
+                    </div>
+                     <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">💡 NÊN LÀM</h4>
+                        <ul class="space-y-2 text-gray-700">
+                             <li class="flex"><span class="mr-2 text-green-500 font-bold">✓</span><span>Luôn cảnh giác với các lời hứa lợi nhuận cao bất thường.</span></li>
+                             <li class="flex"><span class="mr-2 text-green-500 font-bold">✓</span><span>Tự mình nghiên cứu kỹ lưỡng (DYOR) trước khi đầu tư.</span></li>
+                            <li class="flex"><span class="mr-2 text-green-500 font-bold">✓</span><span>Chỉ sử dụng các sàn giao dịch lớn, uy tín và được quản lý rõ ràng.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                 <p class="mt-8 text-center text-sm text-gray-500">Đầu tư vào tiền điện tử luôn tiềm ẩn rủi ro. Việc nhận biết các dấu hiệu lừa đảo là kỹ năng quan trọng nhất để bảo vệ tài sản của bạn.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-16">
+        <p class="text-sm">Tài liệu này chỉ mang tính chất tham khảo và phân tích thông tin, không phải là lời khuyên đầu tư.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const investmentSlider = document.getElementById('investmentSlider');
+            const investmentValue = document.getElementById('investmentValue');
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if(!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            const ctx = document.getElementById('returnChart').getContext('2d');
+            let returnChart;
+
+            function calculateReturns(initialInvestment) {
+                let slothTrustData = [initialInvestment];
+                let realisticReturnData = [initialInvestment];
+                
+                const dailyRate = 0.005; // 0.5%
+                const annualRealisticRate = 0.10; // 10%
+                const dailyRealisticRate = Math.pow(1 + annualRealisticRate, 1/365) - 1;
+
+                for (let i = 1; i <= 365; i++) {
+                    slothTrustData.push(slothTrustData[i-1] * (1 + dailyRate));
+                    realisticReturnData.push(realisticReturnData[i-1] * (1 + dailyRealisticRate));
+                }
+                
+                return { slothTrustData, realisticReturnData };
+            }
+
+            function createOrUpdateChart(initialInvestment) {
+                const { slothTrustData, realisticReturnData } = calculateReturns(initialInvestment);
+                const labels = Array.from({length: 366}, (_, i) => `Ngày ${i}`);
+
+                if (returnChart) {
+                    returnChart.data.datasets[0].data = slothTrustData;
+                    returnChart.data.datasets[1].data = realisticReturnData;
+                    returnChart.update();
+                } else {
+                    returnChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Lợi nhuận Sloth Trust (0.5%/ngày)',
+                                data: slothTrustData,
+                                borderColor: 'rgba(239, 68, 68, 1)',
+                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                tension: 0.1,
+                                borderWidth: 2,
+                                pointRadius: 0,
+                            }, {
+                                label: 'Lợi nhuận thực tế tham khảo (10%/năm)',
+                                data: realisticReturnData,
+                                borderColor: 'rgba(34, 197, 94, 1)',
+                                backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                tension: 0.1,
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                borderDash: [5, 5],
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: false,
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            return '$' + value.toLocaleString();
+                                        }
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        maxTicksLimit: 12
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    callbacks: {
+                                        label: function(context) {
+                                            let label = context.dataset.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            if (context.parsed.y !== null) {
+                                                label += '$' + context.parsed.y.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                            }
+                                            return label;
+                                        }
+                                    }
+                                }
+                            },
+                            interaction: {
+                                mode: 'nearest',
+                                axis: 'x',
+                                intersect: false
+                            }
+                        }
+                    });
+                }
+            }
+            
+            investmentSlider.addEventListener('input', function() {
+                const value = parseInt(this.value);
+                investmentValue.textContent = `$${value.toLocaleString()}`;
+                createOrUpdateChart(value);
+            });
+
+            createOrUpdateChart(1000);
+        });
+    </script>
+</body>
+</html>
