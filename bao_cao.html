@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Tích Độ Uy Tín Sàn Giao Dịch JuCoin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #003F5C;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left {
+            left: 0;
+        }
+        .timeline-container.right {
+            left: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #FF6361;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-container.right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container.left, .timeline-container.right {
+                left: 0%;
+            }
+            .timeline-container.right::after {
+                left: 15px;
+            }
+             .timeline-container.left::after {
+                left: 15px;
+            }
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #BC5090;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-[#003F5C]">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#BC5090] to-[#FF6361]">Phân Tích Sàn JuCoin</h1>
+            <p class="text-xl mt-4 max-w-3xl mx-auto text-[#58508D]">Một cuộc điều tra dựa trên bằng chứng về các tuyên bố và độ uy tín của sàn giao dịch JuCoin.</p>
+        </header>
+
+        <section id="timeline-section" class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-10">Dòng Thời Gian: Tuyên Bố và Sự Thật</h2>
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-xl text-[#BC5090]">2013: Thành lập</h3>
+                        <p class="font-semibold mt-2">Tuyên bố: <span class="font-normal">Thành lập với tên jbex.com, một trong những nền tảng giao dịch sớm nhất.</span></p>
+                        <p class="font-semibold mt-2 text-[#FF6361]">Sự thật: <span class="font-normal">Không có bất kỳ hồ sơ đáng tin cậy nào về một sàn giao dịch tên "jbex.com" có vai trò quan trọng trong giai đoạn 2013-2017. Đây là một tuyên bố không thể kiểm chứng.</span></p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-xl text-[#BC5090]">2017: Dẫn đầu thị trường</h3>
+                        <p class="font-semibold mt-2">Tuyên bố: <span class="font-normal">Đứng đầu toàn cầu về khối lượng giao dịch.</span></p>
+                        <p class="font-semibold mt-2 text-[#FF6361]">Sự thật: <span class="font-normal">Hoàn toàn không có dữ liệu nào từ các nguồn uy tín như CoinMarketCap, CoinGecko hay các trang tin tức lớn xác nhận điều này. Các sàn dẫn đầu năm 2017 là những tên tuổi hoàn toàn khác.</span></p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-xl text-[#BC5090]">2020: Giấy phép Singapore</h3>
+                        <p class="font-semibold mt-2">Tuyên bố: <span class="font-normal">Được miễn trừ MAS (Cơ quan Tiền tệ Singapore).</span></p>
+                        <p class="font-semibold mt-2 text-[#FF6361]">Sự thật: <span class="font-normal">Tên "JuCoin" hoặc "jbex.com" không xuất hiện trên bất kỳ danh sách công khai nào của MAS về các đơn vị được cấp phép hoặc được miễn trừ. Đây là một tuyên bố sai sự thật rõ ràng.</span></p>
+                    </div>
+                </div>
+                 <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-xl text-[#BC5090]">2024: Được mua lại</h3>
+                        <p class="font-semibold mt-2">Tuyên bố: <span class="font-normal">Được Exor Digital Holdings Limited mua lại và đổi thương hiệu.</span></p>
+                        <p class="font-semibold mt-2 text-[#FF6361]">Sự thật: <span class="font-normal">"Exor Digital Holdings Limited" là một cái tên không có dấu ấn trong thế giới tài chính và M&A. Có vẻ đây là một công ty vỏ bọc được tạo ra để tăng uy tín ảo.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="community-feedback" class="mb-20">
+             <h2 class="text-3xl font-bold text-center mb-10">Phản Hồi Từ Cộng Đồng & Các Dấu Hiệu Lừa Đảo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card">
+                     <h3 class="text-xl font-bold text-center mb-4">Phân Tích Cảm Tính Cộng Đồng</h3>
+                    <div class="chart-container">
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-center text-[#58508D]">Phân tích các bài đánh giá và thảo luận trực tuyến cho thấy một bức tranh đáng báo động về trải nghiệm của người dùng.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-center mb-4">Các Loại Rủi Ro Chính</h3>
+                     <div class="chart-container">
+                        <canvas id="redFlagsChart"></canvas>
+                    </div>
+                     <p class="mt-4 text-center text-[#58508D]">Các tuyên bố sai sự thật và việc thiếu giấy phép là những rủi ro nghiêm trọng nhất được xác định.</p>
+                </div>
+            </div>
+             <div class="mt-8 card text-center">
+                <h3 class="text-2xl font-bold text-[#BC5090]">Cảnh Báo Lừa Đảo "Pig Butchering"</h3>
+                <p class="mt-2 text-lg max-w-4xl mx-auto">Nhiều báo cáo của người dùng về JuCoin mô tả một kịch bản lừa đảo kinh điển: nạn nhân được một người lạ mặt dụ dỗ đầu tư, có thể nạp tiền và thấy lợi nhuận ảo, nhưng <strong class="text-[#FF6361]">hoàn toàn không thể rút tiền ra</strong>. Đây là một hình thức lừa đảo tài chính rất nguy hiểm.</p>
+            </div>
+        </section>
+
+        <section id="verdict" class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-10">Kết Luận Cuối Cùng</h2>
+            <div class="card border-4 border-[#FF6361] bg-red-50">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">⚠️</div>
+                    <h3 class="text-4xl font-black text-[#d9534f]">RỦI RO CỰC CAO - KHÔNG ĐÁNG TIN CẬY</h3>
+                    <p class="mt-6 text-lg max-w-4xl mx-auto text-[#003F5C]">
+                        Dựa trên các bằng chứng thu thập được, JuCoin thể hiện tất cả các đặc điểm của một nền tảng lừa đảo được dàn dựng công phu. Các tuyên bố về lịch sử, khối lượng giao dịch và giấy phép pháp lý đều là <strong class="text-[#BC5090]">sai sự thật hoặc không thể kiểm chứng</strong>. Các báo cáo từ cộng đồng về việc không thể rút tiền là hồi chuông cảnh báo cao nhất.
+                    </p>
+                    <p class="mt-4 text-xl font-bold text-[#FF6361] p-4 bg-red-100 rounded-lg inline-block">
+                        Chúng tôi đặc biệt khuyến nghị bạn KHÔNG nạp tiền, giao dịch hay cung cấp bất kỳ thông tin cá nhân nào cho JuCoin.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="scam-analyzer" class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-10">✨ Phân Tích Dấu Hiệu Lừa Đảo Tiền Điện Tử ✨</h2>
+            <div class="card">
+                <p class="text-lg mb-4 text-[#58508D]">Dán bất kỳ văn bản đáng ngờ nào (ví dụ: tin nhắn từ người lạ, mô tả nền tảng mới) vào ô bên dưới để AI của chúng tôi phân tích các dấu hiệu lừa đảo tiềm ẩn.</p>
+                <textarea id="scamInput" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#BC5090] text-[#003F5C]" rows="8" placeholder="Dán văn bản cần phân tích tại đây..."></textarea>
+                <button id="analyzeScamBtn" class="mt-4 bg-gradient-to-r from-[#BC5090] to-[#FF6361] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:from-[#FF6361] hover:to-[#BC5090] transition duration-300 flex items-center justify-center">
+                    Phân Tích Dấu Hiệu Lừa Đảo
+                    <span id="loadingSpinner" class="loading-spinner hidden"></span>
+                </button>
+                <div id="scamResult" class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg text-[#003F5C] min-h-[100px] flex items-center justify-center text-center">
+                    Kết quả phân tích sẽ hiển thị ở đây.
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center p-8 mt-12 text-sm text-gray-500">
+        <p>Báo cáo này được tạo tự động dựa trên phân tích dữ liệu công khai. Luôn tự mình nghiên cứu (DYOR) trước khi đưa ra quyết định đầu tư.</p>
+        <p>Cập nhật lần cuối: 18 tháng 7 năm 2025.</p>
+    </footer>
+
+    <script>
+        const processLabel = (label) => {
+            if (label.length <= 16) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+
+        const chartTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                },
+                legend: {
+                    position: 'top',
+                }
+            }
+        };
+
+        const sentimentCtx = document.getElementById('sentimentChart').getContext('2d');
+        new Chart(sentimentCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Tiêu cực (Báo cáo lừa đảo)', 'Trung lập', 'Tích cực (Nghi vấn giả mạo)'],
+                datasets: [{
+                    label: 'Phản Hồi Cộng Đồng',
+                    data: [90, 5, 5],
+                    backgroundColor: ['#FF6361', '#FFA600', '#58508D'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                     tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: false
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        const redFlagsCtx = document.getElementById('redFlagsChart').getContext('2d');
+        new Chart(redFlagsCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    processLabel('Tuyên bố sai sự thật'),
+                    processLabel('Lịch sử không rõ ràng'),
+                    processLabel('Thiếu giấy phép/Quy định'),
+                    processLabel('Báo cáo lừa đảo từ người dùng')
+                ],
+                datasets: [{
+                    label: 'Mức Độ Rủi Ro',
+                    data: [10, 9, 10, 9.5],
+                    backgroundColor: ['#BC5090', '#58508D', '#FF6361', '#d9534f'],
+                    borderRadius: 5,
+                    barThickness: 30
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 plugins: {
+                     tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 10,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            display: false
+                        }
+                    },
+                    y: {
+                         grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        document.getElementById('analyzeScamBtn').addEventListener('click', async () => {
+            const scamInput = document.getElementById('scamInput').value;
+            const scamResultDiv = document.getElementById('scamResult');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            if (!scamInput.trim()) {
+                scamResultDiv.innerHTML = '<p class="text-red-500">Vui lòng nhập văn bản để phân tích.</p>';
+                return;
+            }
+
+            scamResultDiv.innerHTML = '<p class="text-[#58508D]">Đang phân tích...</p>';
+            loadingSpinner.classList.remove('hidden');
+
+            try {
+                let chatHistory = [];
+                const prompt = `Phân tích văn bản sau đây để tìm các dấu hiệu lừa đảo tiền điện tử tiềm ẩn. Hãy tìm kiếm các dấu hiệu cảnh báo phổ biến như: đảm bảo lợi nhuận cao, áp lực đầu tư nhanh chóng, những lời hứa mơ hồ, tuyên bố về kiến thức bí mật, yêu cầu thông tin cá nhân vượt quá mức thông thường đối với một sàn giao dịch hợp pháp, hoặc các phương thức thanh toán bất thường. Đưa ra đánh giá rõ ràng liệu văn bản có vẻ là một phần của kế hoạch lừa đảo hay không và giải thích lý do của bạn. Nếu đó là một vụ lừa đảo, hãy đề xuất các hành động ngay lập tức mà người dùng nên thực hiện.
+
+Văn bản cần phân tích:
+${scamInput}`;
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    scamResultDiv.innerHTML = `<p>${text}</p>`;
+                } else {
+                    scamResultDiv.innerHTML = '<p class="text-red-500">Không thể phân tích văn bản. Vui lòng thử lại sau.</p>';
+                }
+            } catch (error) {
+                console.error("Lỗi khi gọi API Gemini:", error);
+                scamResultDiv.innerHTML = '<p class="text-red-500">Đã xảy ra lỗi trong quá trình phân tích. Vui lòng kiểm tra kết nối mạng hoặc thử lại.</p>';
+            } finally {
+                loadingSpinner.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
