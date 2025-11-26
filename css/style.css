@@ -87,7 +87,7 @@ body {
     position: absolute;
     /* right: -48%; */
     object-fit: cover;
-    background: url("../img/card-bg-01.png") no-repeat 50% 50% / cover;
+    background: url(../img/card-bg-01.png) no-repeat 50% 50% / cover;
     color: var(--white);
     font: 1em/1.5 sans-serif;
     /* height: 100vh; */
@@ -609,7 +609,7 @@ main {
         left: 2.5vmin;
         right: 2.5vmin;
         background: var(--red4);
-        background: url("../img/card-bg-01.png") no-repeat 50% 50% / cover;
+        background: url(../img/card-bg-01.png) no-repeat 50% 50% / cover;
         border-radius: 5%;
         /* background: transparent url(https://img.freepik.com/free-photo/old-paper-texture-background_118047-1365.jpg?size=626&ext=jpg) 50% 50% no-repeat;
     background-size: cover; */
