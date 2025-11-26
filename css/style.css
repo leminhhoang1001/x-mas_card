@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
-@import url('https://fonts.googleapis.com/css2?family=Oooh+Baby');
-@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Nanum+Brush+Script&family=Reenie+Beanie&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -28,7 +23,7 @@ strong {
 
 body {
     perspective: 250vmin;
-    background: linear-gradient( 0deg, rgb(0 0 0 / 89%) 0%, rgb(59 59 186 / 0%) 64%), url(https://images.pexels.com/photos/1303086/pexels-photo-1303086.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat 50% 50% / cover;
+    background: linear-gradient( 0deg, rgb(0 0 0 / 89%) 0%, rgb(59 59 186 / 0%) 64%), url(../img/web-bg.jpeg) no-repeat 50% 50% / cover;
     height: auto;
     display: flex;
     justify-content: center;
@@ -92,7 +87,7 @@ body {
     position: absolute;
     /* right: -48%; */
     object-fit: cover;
-    background: url("./card-bg-01.png") no-repeat 50% 50% / cover;
+    background: url("../img/card-bg-01.png") no-repeat 50% 50% / cover;
     color: var(--white);
     font: 1em/1.5 sans-serif;
     /* height: 100vh; */

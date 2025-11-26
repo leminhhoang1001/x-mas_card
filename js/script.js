@@ -107,28 +107,43 @@ dayjs.extend(dayjs_plugin_utc);
 
 // update date of card
 function getChristmasCountdown() {
-    const now = dayjs().startOf('day'); // thời gian hiện tại
-    const currentYear = now.year(); //lấy năm hiện tại
+    // Lấy thời gian hiện tại (đặt về đầu ngày để tính toán chính xác số ngày)
+    const now = dayjs().startOf('day'); 
+    const currentYear = now.year();
 
-    //ngày giáng sinh
-    const christmasThisYear = dayjs(`${currentYear}-12-24T00:00:00`);
-    // Nếu đã qua Giáng sinh, tính cho năm tiếp theo
-    // const targetDate = now.isAfter(christmasThisYear) ? dayjs(`${currentYear + 1}-12-24T00:00:00`) : christmasThisYear;
+    // Xác định mốc thời gian cho năm hiện tại
+    // 1. Ngày bắt đầu đếm ngược: 1/11
+    const startCountdown = dayjs(`${currentYear}-11-01`).startOf('day');
+    
+    // 2. Ngày Giáng sinh: 24/12
+    const christmasTarget = dayjs(`${currentYear}-12-24`).startOf('day');
 
-    // Nếu hiện tại là tháng 12, hiển thị đếm ngược
-    if (now.month() === 11) { // Tháng 12 (tháng 0-based index)
-        if (now.isBefore(christmasThisYear)) {
-            const diff = christmasThisYear.diff(now, 'days'); // Số ngày còn lại
-            // const countdown = dayjs.duration(diff);
-            const inputcontent1 = `<p class="daysss"> Days</p>`;
-            const inputcontent2 = `<p class="dayleft"> to go!</p>`;
-            // return `${countdown.days()} ${inputcontent1} ${inputcontent2}`;
-            return `${diff} ${inputcontent1} ${inputcontent2}`;
-        } else {
-            // Sau hoặc đúng ngày Giáng sinh, hiển thị ngày hiện tại    
-            return `${now.format('DD.MM.YYYY')}`;
+    // LOGIC KIỂM TRA:
+    // Kiểm tra xem hôm nay có nằm trong khoảng từ 1/11 đến 24/12 không.
+    // Lưu ý: dayjs().isBefore() và .isAfter() mặc định không tính ngày mốc, 
+    // nên ta dùng phủ định (!) để bao gồm cả ngày 1/11 và 24/12.
+    
+    const isAfterStart = !now.isBefore(startCountdown); // Tương đương: Hôm nay >= 1/11
+    const isBeforeEnd = !now.isAfter(christmasTarget);  // Tương đương: Hôm nay <= 24/12
 
-        }
+    if (isAfterStart && isBeforeEnd) {
+        // --- TRƯỜNG HỢP 1: ĐANG TRONG MÙA GIÁNG SINH (1/11 -> 24/12) ---
+        
+        // Tính số ngày còn lại
+        const diff = christmasTarget.diff(now, 'days'); 
+
+        // Giữ nguyên HTML class cũ của bạn để không vỡ giao diện
+        const inputcontent1 = `<p class="daysss"> Days</p>`;
+        const inputcontent2 = `<p class="dayleft"> to go!</p>`;
+        
+        return `${diff} ${inputcontent1} ${inputcontent2}`;
+    } else {
+        // --- TRƯỜNG HỢP 2: NGOÀI MÙA GIÁNG SINH (25/12 -> 31/10 năm sau) ---
+        
+        // Hiển thị ngày tháng năm hiện tại
+        // Mình dùng dấu chấm (.) thay vì (/) để khớp với logic check class 'green' 
+        // trong hàm updateCountdown() của bạn.
+        return `${now.format('DD.MM.YYYY')}`;
     }
 }
 
