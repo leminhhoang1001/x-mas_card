@@ -1,7 +1,7 @@
 const card = document.getElementById('card')
     // const playmusic = document.getElementById('card')
 const tapHint = document.getElementById('tap-hint')
-let id;
+// let id;
 const button = document.getElementById('muteaudio');
 const musicOn = '<i class="fas fa-volume-high"></i>';
 const musicOff = '<i class="fas fa-volume-xmark"></i>';
