@@ -654,6 +654,8 @@ main {
     width: auto;
     color: #ffffff98;
     padding: 1vmin;
+    font-size: 0.7em;
+    opacity: 0.4;
 }
 
 
